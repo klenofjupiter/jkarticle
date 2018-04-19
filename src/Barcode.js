@@ -24,7 +24,7 @@ export default class Barcode extends Component {
  // }
 
    render() {
- 	  return (<div>
+ 	  return (<div className="barcode-wrapper">
               <h2>A Hero's Barcode</h2>
               <svg id="viz"/>
            </div>)
@@ -32,33 +32,22 @@ export default class Barcode extends Component {
 }
 
  const makeData = (data) => {
-    let ordinal = Object.keys(data)
-
-    let outline = d3.select('#viz').selectAll('rect .bars')
-      .data(ordinal)
-      .enter()
-      .append('svg:rect')
-      .attr('x','80')
-      .attr('y', (d, i) => {
-         let height = i*25
-         return height
-      })
-      .attr('height', '25')
-      .attr('width', '100')
-      .style('stroke', 'black')
-      .style('fill', 'none')
-      .style('stroke-width', '1')
-
-      // .on('mouseover', (el) => {
-      //   el.attr('height', '20')
-      // })
-      // .on('mouseout', (el) => {
-      //   el.attr('height', '10')
-      // })
     let complex = []
      for (let field in data) {
         complex.push(data[field])
      }
+
+    let outline = d3.select('#viz').selectAll('rect .bars')
+      .data(complex)
+      .enter()
+      .append('svg:rect')
+      .attr('x','80')
+      .attr('y', (d, i) => i*25)
+      .attr('height', '25')
+      .attr('width', '100')
+      .style('stroke', 'black')
+      .style('fill', '#d3d8d0')
+      .style('stroke-width', '1')
 
     let labels = d3.select('#viz').selectAll('.label')
                    .data(complex)
