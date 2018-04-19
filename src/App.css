@@ -33,13 +33,17 @@
   grid-column-start: 2;
 }
 
-body{
+body {
   padding-left: 5vw;
   padding-right: 5vw;
   padding-top: 5vh;
   padding-bottom: 5vh;
   background-color: #b3b7b0;
   color: #464745;
+}
+svg {
+  width: 40vw ;
+  height: 100vh ;
 }
 
 /*@keyframes App-logo-spin {
