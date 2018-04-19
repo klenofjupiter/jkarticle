@@ -17,18 +17,19 @@ export default class Canvas extends Component {
  // }
 
    render() {
- 	  return <svg id="viz"/>
+ 	  // return <svg id="viz"/>
+    return <div> canvas goes here </div>
    }
 }
 
  const makeData = (data) => {
   	console.log('DATA',data)
-    let arr = []
-    for (let i = 1; i <= +data; i++){
-      let dot = {id: i}
-      arr.push(dot)
-    }
+    // let arr = []
+    // for (let i = 1; i <= +data; i++){
+    //   let dot = {id: i}
+    //   arr.push(dot)
+    // }
 
-    let min = arr[0].id
-    let max = arr[arr.length -1].id
+    // let min = arr[0].id
+    // let max = arr[arr.length -1].id
   } 

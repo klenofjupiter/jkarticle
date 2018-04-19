@@ -4,15 +4,20 @@ import './App.css';
 import Canvas from './Canvas.js'
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      //current information about selected barcode fields 
+    }
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Title: B2B or not B2B: Using Locus to Compare B2B/B2C Companies</h1>
+          <h1 className="App-title">Using Locus to Compare B2B/B2C Companies</h1>
         </header>
         <div className="grid-container">
-        <Canvas className="barcode-viz" />
-        <article className="content">
+        <article className="grid-left">
           <section className="intro">
             <p>A common distinction made in business is between B2B (businesses that sell to other businesses) and B2C (businesses that sell to consumers) companies. While it is easy to determine if a single company is B2B or B2C, it is not entirely straightforward when attempting to do so for many companies within a dataset.</p>
             <p>Picture your local grocery store. Chances are, the products are organized in some variant of the following: baked goods and fresh vegetables in one aisle, raw meats in another, followed by frozen foods and dairy products, and candy across from soft drinks in the final aisle.</p>
@@ -29,9 +34,28 @@ class App extends Component {
             <p>In our dataset, B2B companies (1,252) outnumber B2C companies (380)</p>
             <p>In 2016, B2B companies totaled $6.8 trillion dollars in revenue, while B2C companies totaled $3.6 trillion dollars.</p>
             <p>While there are more B2B public companies in the United States and they account for more of the total revenue, the revenue per company is larger in B2C companies. This is illustrated in the charts above, with the revenue per company in B2C companies being 25% to 50% larger than B2B companies.</p>
-            <p>
+            <p>Notice also that while the total revenue of B2C companies increases steadily over the years, the revenue of B2B companies is more volatile, particularly between 2008-2011.</p>
+            <span>chart goes here</span> <span>chart goes here</span>
+          </section>
+          <section className="Proximity-to-Consumers">
+            <h2>Proximity to Consumers</h2>
+            <p>Applying this algorithm to all companies in our dataset, we arrive at distance scores between 0 (company interacts directly with the consumer) and 5 (company is several steps removed from consumers). The advantage of this method is being able to differentiate B2B companies that are closer to consumers and for whom consumer brand perception matters more (e.g. Apple, Ford — both with scores of 1) from those more squarely in the B2B category (e.g. Boeing, IBM — scores of 4 and 5, respectively).</p>
+            <p>Looking at the average revenue per company (left) in each of these groups, it is clear that the companies closer to consumers (denoted with blue lines) have higher revenue than those more distant. However, the median revenue (right) — which is less susceptible to extreme values — shows no distinct pattern. </p>
+            <span>chart goes here</span> <span>chart goes here</span>
+            <p>The mean values are skewed by high revenue outliers almost exclusively in companies close to consumers (scores closer to 0). We can confirm this by looking at the standard deviations (plotted below), which measures the variability of revenue within each group. Particularly in the past five years, the standard deviation is two to five times larger in companies close to consumers.</p>
+            <span>chart goes here </span>
+            <p>Alternatively, we can use boxplots to observe where the bulk of revenues earned by companies in each group lies. </p>
+            <span> chart goes here </span>
+            <p>Here you can see the large numbers of “outliers” in companies with distance scores of 0-1. These are the companies that have extremely high revenues in comparison to their peers. The bulk of companies, however, have roughly similar revenues regardless of their distance scores.</p>
+            <p>In short, the vast majority of all companies can expect to have revenue of not more than $20-50 billion a year, and only companies close to consumers are breaking that ceiling.</p>
+          </section>
+          <section className="Conclusion">
+            <h2>Conclusion</h2>
+            <p>In this report we found that there are more B2B than B2C publicly-traded companies in the U.S, and they have higher revenues overall ($6.8 trillion versus $3.6 trillion, respectively), but the revenue per company is higher in B2C companies. When breaking down these companies into six tiers (scores of 0 to 5) based on their proximity to consumers, we observed the reason for the higher amounts of revenue per company in companies close to or interacting directly with consumers — the presence of a small number of extremely high-grossing companies such as UnitedHealth and Walmart. </p>
+            <p>There are a number of other questions we could explore through this lens. For example, what are the domains in which B2B and B2C companies’ products are used? Or, is there a moderating effect of resource category on the variability in revenue observed in companies closer to consumers? We hope to continue exploring other ways of dissecting this data using our multi-attribute classification system.</p>
           </section>
         </article>
+        <Canvas className="barcode-viz grid-right" />
         </div>
       </div>
     );
