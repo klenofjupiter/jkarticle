@@ -9,50 +9,89 @@ class App extends Component {
     this.state = {
       //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
       //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
-      barcode:{ "CofC Terminal Case 2": "", 
-               "CofC Terminal Case 1": "", 
-               "2012_NAICS": "112519", 
-               "Customer Product": "RP", 
-               "Dictionary Position Description": "These companies catch and sell freshwater fish and seafood. They sell through food retailers.",
-               "CofC Final Resource 2": "",
-                "Enterprise Locus": "2.2.2 E3i", 
-                "Customer Locus": "1.3.2 F", 
-                "CofC Department Locus": "", 
-                "Final Resource 1": "E4i 2.2.2 F", 
-                "Final Resource 2": "", 
-                "Customer of Customer Locus": "", 
-                "Co-Customer Temporal": "", 
-                "Customer Type": "Consumers",
-                 "Relationship Type": "", 
-                 "Department Locus": "DivA DivA",
-                "Co-Customer Product": "",
-                "Co-Customer Type": "", 
-                "Intermediary 2 Type": "",
-                "Co-Customer Locus": "", 
-                "CofC Constituent Resource 2": "", 
-                "CofC Product": "", 
-                "Dictionary Position Title": "Fish and Seafood", 
-                "Work Group 2": "", 
-                "AD": "818.5", 
-                "Intermediary 1 Locus": "(A4ii) 3.1.2 EDivA", 
-                "Work Group 1": "DivA DivA", 
-                "Constituent Resource 1": "E3i 1.3.2 E4DivA", 
-                "Constituent Resource 2": "", 
-                "CofC Type": "", 
-                "Terminal Case 2": "", 
-                "Terminal Case 1": "DivM", 
-                "Customer Relationship": "", 
-                "Customer Temporal": "First", 
-                "CofC Constituent Resource 1": "", 
-                "Enterprise Product": "RP", 
-                "Process": "In-house", 
-                "Intermediary 2 Locus": "", 
-                "CofC Work Group 1": "", 
-                "CofC Final Resource 1": "", 
-                "2012_Title": "Other Aquaculture", 
-                "CofC Work Group 2": "", 
-                "Intermediary 1 Type": "With Inventory", 
-                "Product Line": "Main"}
+      // barcode: {
+      //   companyLoci : {
+      //     dr: "", 
+      //     verb: "2.2", 
+      //     object: "B", 
+      //     io: "", 
+      //   }, 
+      //   intermediary1 : {
+      //     dr: "", 
+      //     verb: "2.2", 
+      //     object: "B", 
+      //     io: "", 
+      //   }, 
+      //   intermediary2: {
+      //     dr: "A", 
+      //     verb: "3.1", 
+      //     object: "B", 
+      //     io: "", 
+      //   }, 
+      //   productUseLoci: {
+      //     subject: "B", 
+      //     verb: "1.2", 
+      //     object: "B",
+      //   }, 
+      //   domain: {
+      //     dr: "B", 
+      //     verb: "1.2", 
+      //     object:"B", 
+      //     io:"", 
+      //   }, 
+      //   customerLoci: {
+      //     dr:"B", 
+      //     verb: "1.2", 
+      //     object: "B",
+      //   }, 
+      //   customerProductUseLoci: {
+      //     resourceLoci: {
+      //       subject: "B", 
+      //       verb: "2.2", 
+      //       object: "E",
+      //     }, 
+      //     workLoci: {
+      //       verb:"2.2", 
+      //       object:"E",
+      //     }
+      //   }, 
+      //   customerOfCustomer: {
+      //     verb: "2.2", 
+      //     object: "E",
+      //   }
+      // }, 
+      flatBarcode: {
+        cldr: "", 
+        clvb:"2.2", 
+        clobj:"B", 
+        clio: "", 
+        int1dr: "", 
+        int1verb: "2.2", 
+        int1obj: "B", 
+        int1io: "", 
+        int2dr: "A", 
+        int2verb: "3.1", 
+        int2obj: "B", 
+        int2io:"", 
+        pusub:"B", 
+        puverb:"1.2", 
+        puobj:"B", 
+        domdr:"B", 
+        domverb:"1.2",
+        domobj:"B", 
+        domio:"", 
+        custdr:"B", 
+        custverb:"1.2", 
+        custobj:"B", 
+        cpurlsubj:"B", 
+        cpurlverb:"2.2", 
+        cpurlobj: "E", 
+        cpuwlverb:"2.2", 
+        cpuwlobj:"E",
+        cust2verb:"2.2", 
+        cust2obj:"E",
+      }
+
     }
   }
   render() {
@@ -100,7 +139,7 @@ class App extends Component {
             <p>There are a number of other questions we could explore through this lens. For example, what are the domains in which B2B and B2C companies’ products are used? Or, is there a moderating effect of resource category on the variability in revenue observed in companies closer to consumers? We hope to continue exploring other ways of dissecting this data using our multi-attribute classification system.</p>
           </section>
         </article>
-        <Barcode className="barcode-viz grid-right" data={this.state.barcode}/>
+        <Barcode className="barcode-viz grid-right" data={this.state.flatBarcode}/>
         </div>
       </div>
     );
