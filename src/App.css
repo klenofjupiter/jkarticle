@@ -32,6 +32,9 @@
 .grid-right {
   grid-column-start: 2;
 }
+.fixed {
+  position:fixed;
+}
 
 body {
   padding-left: 5vw;
@@ -43,7 +46,12 @@ body {
 }
 svg {
   width: 40vw ;
-  height: 100vh ;
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding-top: 25px;
+
 }
 
 /*@keyframes App-logo-spin {

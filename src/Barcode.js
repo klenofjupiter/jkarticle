@@ -44,7 +44,7 @@ export default class Barcode extends Component {
          return height
       })
       .attr('height', '25')
-      .attr('width', '20vw')
+      .attr('width', '100')
       .style('stroke', 'black')
       .style('fill', 'none')
       .style('stroke-width', '1')
@@ -64,7 +64,7 @@ export default class Barcode extends Component {
                    .data(complex)
                    .enter()
                    .append('text')
-                   .attr('x', '150' )
+                   .attr('x', '120' )
                    .attr('y', (d,i) => i*25-5)
                    .attr('class',' label')
                    .attr('stroke', '#28440c')
