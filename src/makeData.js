@@ -22,6 +22,19 @@ let dictionary = {
   '1.2':'Transports ',
  }
 
+//helper functions for hover-labels
+function show(group) {
+	console.log('showing')
+     let selection = d3.selectAll(group)
+     .classed('makeViz', true)
+ }
+
+function hide(group){
+	console.log('hiding')
+     d3.selectAll(group)
+     .classed('makeViz', false)
+ }
+
 const makeData = (data, clicker) => {
 
     let cl = []
@@ -48,6 +61,12 @@ const makeData = (data, clicker) => {
         return dictionary[cl[i][1]]
       })
       .attr('class', 'companyLocus')
+      .on('mouseenter', () => {
+      	show('.clEnglish')
+      })
+      .on('mouseleave', () =>{
+      	hide('.clEnglish')
+      })
       
      let clHeader = clGroup.append('text')
       					.attr('x', '70')
@@ -66,6 +85,7 @@ const makeData = (data, clicker) => {
     						.attr('x', '190')
     						.attr('y', '60')
     						.text(clTranslate)
+    						.attr('class','clEnglish')
 
       let clLabel = clGroup.selectAll('.clLabel')
         .data(cl)
@@ -107,6 +127,12 @@ const makeData = (data, clicker) => {
         return dictionary[f1[i][1]]
       })
       .attr('class', 'firstInt')
+      .on('mouseenter', () => {
+      	show('.f1English')
+      })
+      .on('mouseleave', () =>{
+      	hide('.f1English')
+      })
 
       let f1Label = clGroup.selectAll('.f1Label')
         .data(f1)
@@ -129,6 +155,7 @@ const makeData = (data, clicker) => {
     						.attr('x', '190')
     						.attr('y', '180')
     						.text(f1Translate)
+    						.attr('class','f1English')
 
     let f2 = []
     for (let field in data.f2){
@@ -160,6 +187,12 @@ const makeData = (data, clicker) => {
         return dictionary[f2[i][1]]      
 
       })
+      .on('mouseenter', () => {
+      	show('.f2English')
+      })
+      .on('mouseleave', () =>{
+      	hide('.f2English')
+      })
 
       let f2Label = f2Group.selectAll('.f2Label')
         .data(f2)
@@ -181,6 +214,7 @@ const makeData = (data, clicker) => {
     						.attr('x', '190')
     						.attr('y', '290')
     						.text(f2Translate)
+    						.attr('class','f2English')
 
     let cust = []
     for (let field in data.cust){
@@ -208,6 +242,12 @@ const makeData = (data, clicker) => {
         if (!cust[i][1]) return dictionary['empty']
         return dictionary[cust[i][1]]
       })
+      .on('mouseenter', () => {
+      	show('.custEnglish')
+      })
+      .on('mouseleave', () =>{
+      	hide('.custEnglish')
+      })
     let custLabel = custGroup.selectAll('.custLabel')
         .data(cust)
         .enter()
@@ -228,6 +268,7 @@ const makeData = (data, clicker) => {
     						.attr('x', '190')
     						.attr('y', '420')
     						.text(custTranslate)
+    						.attr('class','custEnglish')
 
     let cust2 = []
     for (let field in data.cust2){
@@ -256,6 +297,12 @@ const makeData = (data, clicker) => {
         if (!cust2[i][1]) return dictionary['empty']
         return dictionary[cust2[i][1]]
       })
+      .on('mouseenter', () => {
+      	show('.cust2English')
+      })
+      .on('mouseleave', () =>{
+      	hide('.cust2English')
+      })
     let cust2Label = cust2Group.selectAll('.custLabel')
         .data(cust2)
         .enter()
@@ -277,6 +324,7 @@ const makeData = (data, clicker) => {
     						.attr('x', '190')
     						.attr('y', '540')
     						.text(cust2Translate)
+    						.attr('class','cust2English')
 
 
 

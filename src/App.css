@@ -26,6 +26,24 @@
 .fixed {
   position:fixed;
 }
+.clEnglish {
+  display: none;
+}
+.f1English {
+  display: none;
+}
+.f2English {
+  display: none;
+}
+.custEnglish {
+  display: none;
+}
+.cust2English {
+  display: none;
+}
+.makeViz{
+  display: block;
+}
 div.barcode-wrapper > h2 {
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -52,6 +70,8 @@ svg {
 article {
   padding-left: 10px;
 }
+
+
 /*#stick {
   position: -webkit-sticky;
   position: sticky;
