@@ -19,9 +19,9 @@ export default class Barcode extends Component {
   shouldComponentUpdate() { 
   	return false;
   }
-  //got complex updates?
-  // componentWillReceiveProps(nextProps){
- // }
+  // got complex updates?
+  componentWillReceiveProps(nextProps){
+ }
 
    render() {
  	  return (<div className="barcode-wrapper">

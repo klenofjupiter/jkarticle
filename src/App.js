@@ -9,42 +9,49 @@ class App extends Component {
     this.state = {
       //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
       //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
-      barcode: {
-        companyLoci : {
+      barcode: [
+         {
+          name: "Company Loci",
           dr: "", 
           verb: "2.2", 
           object: "B", 
           io: "", 
         }, 
-        intermediary1 : {
+         {
+          name: "First Intermediary",
           dr: "", 
           verb: "2.2", 
           object: "B", 
           io: "", 
         }, 
-        intermediary2: {
+        {
+          name: "Second Intermediary",
           dr: "A", 
           verb: "3.1", 
           object: "B", 
           io: "", 
         }, 
-        productUseConstituent: {
+        {
+          name: "Product Use Constituent Loci",
           subject:"",
           verb: "",
           object: "",
         },
-        productUseFinal: {
+         {
+          name: "Product Use Final Loci",
           subject: "B", 
           verb: "1.2", 
           object: "B",
         }, 
-        domain: {
+        {
+          name: "Domain"
           dr: "B", 
           verb: "1.2", 
           object:"B", 
           io:"", 
         }, 
-        customerLoci: {
+        {
+          name: "Customer Loci"
           dr:"B", 
           verb: "1.2", 
           object: "B",
@@ -61,11 +68,14 @@ class App extends Component {
         //     object:"E",
         //   }
         // }, 
-        customerOfCustomer: {
+        {
+          name: "Customer of Customer Loci",
+          dr: "",
           verb: "2.2", 
           object: "E",
+          io: "",
         }
-      }, 
+      ], 
       // flatBarcode: {
       //   cldr: "", 
       //   clvb:"2.2", 
