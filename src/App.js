@@ -92,9 +92,13 @@ class App extends Component {
   }
 
   clickHandler() {
-    console.log('i am a working clickHandler')
-    this.setState({status: "B2C"})
-    // this.setState({this.state.barcode:{...this.state.barcode, this.state.barcode.cpul:{...this.state.barcode.cpul, object:"A"}}})
+    if(this.state.status === 'B2B'){ 
+      this.setState({status: "B2C"}) 
+     }else{
+      this.setState({status:"B2B"})
+     }
+
+    this.setState({barcode:{...this.state.barcode, cpul:{...this.state.barcode.cpul, object:"A"}}})
   }
 
 
