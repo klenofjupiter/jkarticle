@@ -24,18 +24,24 @@ let dictionary = {
 
 //helper functions for hover-labels
 function show(group) {
-	console.log('showing')
      let selection = d3.selectAll(group)
      .classed('makeViz', true)
  }
 
 function hide(group){
-	console.log('hiding')
      d3.selectAll(group)
      .classed('makeViz', false)
  }
 
-const makeData = (data, clicker) => {
+const makeData = (data, clicker, status) => {
+
+  let intro = d3.select('#viz').append('text')
+  			  .attr('x','10')
+  			  .attr('y', '800')
+  			  .text(`Hi, I am a ${status} Company`)
+  			  .on('click', () => {
+  			  	clicker();
+  			  })
 
     let cl = []
     for (let field in data.cl){

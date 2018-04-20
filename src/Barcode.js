@@ -4,22 +4,20 @@ import makeData from './makeData'
 export default class Barcode extends Component {
 
   componentDidMount() {
-    makeData(this.props.data, this.props.clickHandler)
+    makeData(this.props.data, this.props.clickHandler, this.props.status)
   }
   shouldComponentUpdate(nextProps) { 
-    if(nextProps.status !== this.props.status) return true;
+    // if(nextProps.status !== this.props.status) return true;
     return false;
   }
   //update when click-handler resends props
   componentWillReceiveProps(nextProps){
-    makeData(nextProps.data, nextProps.clickHandler)
+    d3.selectAll("svg > *").remove();
+    makeData(nextProps.data, nextProps.clickHandler, this.props.status)
  }
 
   render() {
-    return (<div id="stick">
-              <h2>Hi, I'm a <button onClick={this.props.clickHandler}>{this.props.status}</button> Company</h2>
-              <svg id="viz" />
-           </div>)
+    return (<svg id="viz" />)
    }
 }
   

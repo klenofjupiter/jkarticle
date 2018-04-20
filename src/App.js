@@ -57,6 +57,7 @@ class App extends Component {
   }
 
   clickHandler() {
+    console.log('gonna handle my click')
     if(this.state.status === 'B2B'){ 
       this.setState({status: "B2C"}) 
      }else{
