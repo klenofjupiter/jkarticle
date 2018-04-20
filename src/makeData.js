@@ -10,6 +10,18 @@ let dictionary = {
   'E':  '#FFB74D',
  }
 
+//dictionary of verbs and nouns to english
+ let key = {
+  'A': 'Real Estate',
+  'B': 'Machines', 
+  'C': 'Information', 
+  'D': 'Money', 
+  'E': 'Energy', 
+  '2.2': 'Sells',
+  '3.1': 'Produces', 
+  '1.2':'Transports',
+ }
+
 const makeData = (data, clicker) => {
 
     let cl = []

@@ -22,7 +22,7 @@
 
 .grid-right {
   grid-column-start: 2;
-}
+ }
 .fixed {
   position:fixed;
 }
@@ -31,6 +31,7 @@ div.barcode-wrapper > h2 {
   margin-bottom: 0px;
   margin-left: 40px;
 }
+
 body {
   padding-left: 5vw;
   padding-right: 5vw;
@@ -51,3 +52,8 @@ svg {
 article {
   padding-left: 10px;
 }
+/*#stick {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}*/

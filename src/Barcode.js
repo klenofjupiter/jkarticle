@@ -16,10 +16,9 @@ export default class Barcode extends Component {
  }
 
   render() {
-    return (<div>
-              <h2>Hi, I'm a {this.props.status} Company</h2>
-              <p>click on the highlighted loci to change me</p>
-              <svg id="viz"/>
+    return (<div id="stick">
+              <h2>Hi, I'm a <button onClick={this.props.clickHandler}>{this.props.status}</button> Company</h2>
+              <svg id="viz" />
            </div>)
    }
 }
