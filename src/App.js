@@ -5,7 +5,7 @@ import Barcode from './Barcode.js'
 
 class App extends Component {
   constructor(){
-    super()
+    super();
     this.state = {
       //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
       //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
@@ -32,26 +32,7 @@ class App extends Component {
           verb: "3.1", 
           object: "B", 
           io: "", 
-        }, 
-        pucl: {
-          // name: "Product Use Constituent Loci",
-          subject:"",
-          verb: "",
-          object: "",
-        },
-         pufl: {
-          // name: "Product Use Final Loci",
-          subject: "B", 
-          verb: "1.2", 
-          object: "B",
-        }, 
-        dom: {
-          // name: "Domain",
-          dr: "B", 
-          verb: "1.2", 
-          object:"B", 
-          io:"", 
-        }, 
+        },  
         cust: {
           // name: "Customer Loci",
           dr:"B", 
@@ -59,22 +40,6 @@ class App extends Component {
           object: "B",
           io:""
         }, 
-        cpul: {
-          subject:"B",
-          verb:"2.2", 
-          object:"E",
-        },
-        // customerProductUseLoci: {
-        //   resourceLoci: {
-        //     subject: "B", 
-        //     verb: "2.2", 
-        //     object: "E",
-        //   }, 
-        //   workLoci: {
-        //     verb:"2.2", 
-        //     object:"E",
-        //   }
-        // }, 
         cust2: {
           // name: "Customer of Customer Loci",
           dr: "",
@@ -97,8 +62,8 @@ class App extends Component {
      }else{
       this.setState({status:"B2B"})
      }
-
-    this.setState({barcode:{...this.state.barcode, cpul:{...this.state.barcode.cpul, object:"A"}}})
+    // all click handlers must over-write the entire barcode otherwise it will get CERAZY
+    // this.setState({barcode:{...this.state.barcode, cpul:{...this.state.barcode.cpul, object:"A"}}})
   }
 
 

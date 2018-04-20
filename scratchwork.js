@@ -1,47 +1,193 @@
-   // let ordinal = Object.keys(data)
+        // let pucl = []
+    // for (let field in data.pucl){
+    //   pucl.push([field, data.pucl[field]])
+    // }
+    // let puclGroup = f2Group.append('g')
 
-    // let outline = d3.select('#viz').selectAll('rect .bars')
-    //   .data(ordinal)
+    // let puclBars = puclGroup.selectAll('rect .bars')
+    //   .data(pucl)
     //   .enter()
     //   .append('svg:rect')
     //   .attr('x','80')
     //   .attr('y', (d, i) => {
-    //      let height = i*25
+    //      let height = i*25 + 360
     //      return height
     //   })
     //   .attr('height', '25')
     //   .attr('width', '100')
-    //   .style('stroke', 'black')
-    //   .style('fill', 'none')
-    //   .style('stroke-width', '1')
+    //   .style('stroke', 'none')
+    //   .style('fill', (d, i) => {
+    //     if (!pucl[i][1]){
+    //       return '#565655'
+    //     }
+    //     if(pucl[i][1] === '2.2'){
+    //       return '#FCC528'
+    //     }
+    //     if(pucl[i][1] === 'B') {
+    //       return "#64B5F6"
+    //     }
+    //     if(pucl[i][1] === 'A') {
+    //       return "#9575CD"
+    //     }
+    //     if(pucl[i][1] === '3.1') {
+    //       return "#8BBA25"
+    //     }        
+
+    //   })
+    // let puclLabel = puclGroup.selectAll('.puclLabel')
+    //     .data(pucl)
+    //     .enter()
+    //     .append('svg:text')
+    //     .attr('x', '120')
+    //     .attr('y', (d, i) => i*25 + (240-5) + 25)
+    //     .attr('stroke', 'black')
+    //     .text((d, i) => pucl[i][1] )
+
+    // let pufl = []
+    // for (let field in data.pufl){
+    //   pufl.push([field, data.pufl[field]])
+    // }
+    // let puflGroup = puclGroup.append('g')
+    // let puflBars = puflGroup.selectAll('rect .bars')
+    //   .data(pufl)
+    //   .enter()
+    //   .append('svg:rect')
+    //   .attr('x','80')
+    //   .attr('y', (d, i) => {
+    //      let height = i*25 + 360
+    //      return height
+    //   })
+    //   .attr('height', '25')
+    //   .attr('width', '100')
+    //   .style('stroke', 'none')
+    //   .style('fill', (d, i) => {
+    //     if (!pufl[i][1]){
+    //       return '#565655'
+    //     }
+    //     if(pufl[i][1] === '2.2'){
+    //       return '#FCC528'
+    //     }
+    //     if(pufl[i][1] === 'B') {
+    //       return "#64B5F6"
+    //     }
+    //     if(pufl[i][1] === 'A') {
+    //       return "#9575CD"
+    //     }
+    //     if(pufl[i][1] === '3.1') {
+    //       return "#8BBA25"
+    //     }
+    //     if(pufl[i][1] === '1.2') {
+    //       return "#D8223F"
+    //     }
+    //   })
+    // let puflLabel = puflGroup.selectAll('.puflLabel')
+    //     .data(pufl)
+    //     .enter()
+    //     .append('svg:text')
+    //     .attr('x', '120')
+    //     .attr('y', (d, i) => i*25 + (360-5) + 25)
+    //     .attr('stroke', 'black')
+    //     .text((d, i) => pufl[i][1] )
+
+    // let dom = []
+    // for (let field in data.dom){
+    //   dom.push([field, data.dom[field]])
+    // }
+    // let domGroup = puflGroup.append('g')
+
+    // let domBars = domGroup.selectAll('rect .bars')
+    //   .data(dom)
+    //   .enter()
+    //   .append('svg:rect')
+    //   .attr('x','80')
+    //   .attr('y', (d, i) => {
+    //      let height = i*25 + 460
+    //      return height
+    //   })
+    //   .attr('height', '25')
+    //   .attr('width', '100')
+    //   .style('stroke', 'none')
+    //   .style('fill', (d, i) => {
+    //     if (!dom[i][1]){
+    //       return '#565655'
+    //     }
+    //     if(dom[i][1] === '2.2'){
+    //       return '#FCC528'
+    //     }
+    //     if(dom[i][1] === 'B') {
+    //       return "#64B5F6"
+    //     }
+    //     if(dom[i][1] === 'A') {
+    //       return "#9575CD"
+    //     }
+    //     if(dom[i][1] === '3.1') {
+    //       return "#8BBA25"
+    //     }
+    //     if(dom[i][1] === '1.2') {
+    //       return "#D8223F"
+    //     }
+    //   })
+    // let domLabel = domGroup.selectAll('.domLabel')
+    //     .data(dom)
+    //     .enter()
+    //     .append('svg:text')
+    //     .attr('x', '120')
+    //     .attr('y', (d, i) => i*25 + (460-5) + 25)
+    //     .attr('stroke', 'black')
+    //     .text((d, i) => dom[i][1] )
 
 
-    // let complex = []
-    //  for (let field in data) {
-    //     complex.push(data[field])
-    //  }
+    // let cpul = []
+    // for (let field in data.cpul){
+    //   cpul.push([field, data.cpul[field]])
+    // }
+    // let cpulGroup = custGroup.append('g')
 
-    // let labels = d3.select('#viz').selectAll('.label')
-    //                .data(complex)
-    //                .enter()
-    //                .append('text')
-    //                .attr('x', '120' )
-    //                .attr('y', (d,i) => i*25-5)
-    //                .attr('class',' label')
-    //                .attr('stroke', '#28440c')
-    //                .text((d) => d)
-   
-   // let currentY = 25;
-   // data.forEach((datum, index) => {
-   //  let outline = d3.select('#viz').selectAll(`rect. bars ${datum.name}`)
-   //    .data(datum)
-   //    .enter()
-   //    .append('svg:rect')
-   //    .attr('x', '80')
-   //    .attr('y', (d, i) => {
-   //      return currentY + i*25
-   //    })
-   // })
+    // let cpulBars = cpulGroup.selectAll('rect .bars')
+    //   .data(cpul)
+    //   .enter()
+    //   .append('svg:rect')
+    //   .attr('x','80')
+    //   .attr('y', (d, i) => {
+    //      let height = i*25 + 700
+    //      return height
+    //   })
+    //   .attr('height', '25')
+    //   .attr('width', '100')
+    //   .style('stroke', 'red')
+    //   .style('stroke-width', '3')
+    //   .style('fill', (d, i) => {
+    //     if (!cpul[i][1]){
+    //       return '#565655'
+    //     }
+    //     if(cpul[i][1] === '2.2'){
+    //       return '#FCC528'
+    //     }
+    //     if(cpul[i][1] === 'B') {
+    //       return "#64B5F6"
+    //     }
+    //     if(cpul[i][1] === 'A') {
+    //       return "#9575CD"
+    //     }
+    //     if(cpul[i][1] === '3.1') {
+    //       return "#8BBA25"
+    //     }
+    //     if(cpul[i][1] === '1.2') {
+    //       return "#D8223F"
+    //     }
+    //     if(cpul[i][1] === 'E') {
+    //       return '#FFB74D'
+    //     }
+    //   })
+    //   .on('click', () => { clicker(); })
+    // let cpulLabel = cpulGroup.selectAll('.cpulLabel')
+    //     .data(cpul)
+    //     .enter()
+    //     .append('svg:text')
+    //     .attr('x', '120')
+    //     .attr('y', (d, i) => i*25 + (700-5) + 25)
+    //     .attr('stroke', 'black')
+    //     .text((d, i) => cpul[i][1] )
 
 
       let companyLoci = d3.select('#viz').selectAll('rect .bars companyLoci')
@@ -155,3 +301,82 @@
    //      return currentY + i*25
    //    })
    // })
+
+
+
+    this.state = {
+      //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
+      //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
+      status: "B2B",
+      distance: "3",
+      barcode: {
+         cl: {
+          // name: "Company Loci",
+          dr: "", 
+          verb: "2.2", 
+          object: "B", 
+          io: "", 
+        }, 
+         f1: {
+          // name: "First Intermediary",
+          dr: "", 
+          verb: "2.2", 
+          object: "B", 
+          io: "", 
+        }, 
+        f2: {
+          // name: "Second Intermediary",
+          dr: "A", 
+          verb: "3.1", 
+          object: "B", 
+          io: "", 
+        }, 
+        // pucl: {
+        //   // name: "Product Use Constituent Loci",
+        //   subject:"",
+        //   verb: "",
+        //   object: "",
+        // },
+        //  pufl: {
+        //   // name: "Product Use Final Loci",
+        //   subject: "B", 
+        //   verb: "1.2", 
+        //   object: "B",
+        // }, 
+        // dom: {
+        //   // name: "Domain",
+        //   dr: "B", 
+        //   verb: "1.2", 
+        //   object:"B", 
+        //   io:"", 
+        // }, 
+        cust: {
+          // name: "Customer Loci",
+          dr:"B", 
+          verb: "1.2", 
+          object: "B",
+          io:""
+        }, 
+        // cpul: {
+        //   subject:"B",
+        //   verb:"2.2", 
+        //   object:"E",
+        // },
+        // customerProductUseLoci: {
+        //   resourceLoci: {
+        //     subject: "B", 
+        //     verb: "2.2", 
+        //     object: "E",
+        //   }, 
+        //   workLoci: {
+        //     verb:"2.2", 
+        //     object:"E",
+        //   }
+        // }, 
+        cust2: {
+          // name: "Customer of Customer Loci",
+          dr: "",
+          verb: "2.2", 
+          object: "E",
+          io: "",
+        }
