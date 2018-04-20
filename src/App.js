@@ -59,6 +59,11 @@ class App extends Component {
           object: "B",
           io:""
         }, 
+        cpul: {
+          subject:"B",
+          verb:"2.2", 
+          object:"E",
+        },
         // customerProductUseLoci: {
         //   resourceLoci: {
         //     subject: "B", 
@@ -88,6 +93,8 @@ class App extends Component {
 
   clickHandler() {
     console.log('i am a working clickHandler')
+    this.setState({status: "B2C"})
+    // this.setState({this.state.barcode:{...this.state.barcode, this.state.barcode.cpul:{...this.state.barcode.cpul, object:"A"}}})
   }
 
 
