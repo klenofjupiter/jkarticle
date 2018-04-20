@@ -11,13 +11,13 @@ export default class Barcode extends Component {
   // }
 
   componentDidMount() {
-  	//rules for D3 go here 
-  	makeData(this.props.data)
+    //rules for D3 go here 
+    makeData(this.props.data)
 
 
   }
   shouldComponentUpdate() { 
-  	return false;
+    return false;
   }
   //update when click-handler resends props
   componentWillReceiveProps(nextProps){
@@ -25,7 +25,7 @@ export default class Barcode extends Component {
  }
 
   render() {
- 	  return (<div>
+    return (<div>
               <h2>Hi, I'm a Company</h2>
               <svg id="viz"/>
            </div>)
