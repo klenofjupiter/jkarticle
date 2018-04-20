@@ -12,14 +12,14 @@ let dictionary = {
 
 //dictionary of verbs and nouns to english
  let key = {
-  'A': 'Real Estate',
-  'B': 'Machines', 
-  'C': 'Information', 
-  'D': 'Money', 
-  'E': 'Energy', 
-  '2.2': 'Sells',
-  '3.1': 'Produces', 
-  '1.2':'Transports',
+  'A': 'Real Estate ',
+  'B': 'Machines ', 
+  'C': 'Information ', 
+  'D': 'Money ', 
+  'E': 'Energy ', 
+  '2.2': 'Sells ',
+  '3.1': 'Produces ', 
+  '1.2':'Transports ',
  }
 
 const makeData = (data, clicker) => {
@@ -54,6 +54,18 @@ const makeData = (data, clicker) => {
       					.attr('y', '0')
       					.attr('stroke', 'black')
       					.text('Company Locus')
+    let clTranslate = ""
+
+    cl.forEach((arr) => {
+       if(arr[1]){
+       	clTranslate+= key[arr[1]]
+       }
+    })
+
+    let clEnglish = clGroup.append('text')
+    						.attr('x', '190')
+    						.attr('y', '60')
+    						.text(clTranslate)
 
       let clLabel = clGroup.selectAll('.clLabel')
         .data(cl)
@@ -104,6 +116,19 @@ const makeData = (data, clicker) => {
         .attr('y', (d, i) => i*25 + (120) + 25)
         .attr('stroke', 'black')
         .text((d, i) => f1[i][1] )
+   
+    let f1Translate = ""
+
+    f1.forEach((arr) => {
+       if(arr[1]){
+       	f1Translate+= key[arr[1]]
+       }
+    })
+
+    let f1English = f1Group.append('text')
+    						.attr('x', '190')
+    						.attr('y', '180')
+    						.text(f1Translate)
 
     let f2 = []
     for (let field in data.f2){
@@ -144,6 +169,18 @@ const makeData = (data, clicker) => {
         .attr('y', (d, i) => i*25 + (240) + 25)
         .attr('stroke', 'black')
         .text((d, i) => f2[i][1] )
+    let f2Translate = ""
+
+    f2.forEach((arr) => {
+       if(arr[1]){
+       	f2Translate+= key[arr[1]]
+       }
+    })
+
+    let f2English = f2Group.append('text')
+    						.attr('x', '190')
+    						.attr('y', '290')
+    						.text(f2Translate)
 
     let cust = []
     for (let field in data.cust){
@@ -179,6 +216,18 @@ const makeData = (data, clicker) => {
         .attr('y', (d, i) => i*25 + (360) + 25)
         .attr('stroke', 'black')
         .text((d, i) => cust[i][1] )
+    let custTranslate = ""
+
+    cust.forEach((arr) => {
+       if(arr[1]){
+       	custTranslate+= key[arr[1]]
+       }
+    })
+
+    let custEnglish = custGroup.append('text')
+    						.attr('x', '190')
+    						.attr('y', '420')
+    						.text(custTranslate)
 
     let cust2 = []
     for (let field in data.cust2){
@@ -215,6 +264,20 @@ const makeData = (data, clicker) => {
         .attr('y', (d, i) => i*25 + (480) + 25)
         .attr('stroke', 'black')
         .text((d, i) => cust2[i][1] )
+
+    let cust2Translate = ""
+
+    cust2.forEach((arr) => {
+       if(arr[1]){
+       	cust2Translate+= key[arr[1]]
+       }
+    })
+
+    let cust2English = cust2Group.append('text')
+    						.attr('x', '190')
+    						.attr('y', '540')
+    						.text(cust2Translate)
+
 
 
 } 
