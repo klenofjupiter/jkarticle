@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 
 export default class Barcode extends Component {
-  // constructor(){
-  //   super();
-  //   //the state itself will be the barcode for now
-  //   this.state = {
-
-  //   }
-  // }
 
   componentDidMount() {
     //rules for D3 go here 
-    makeData(this.props.data)
+    console.log('clickclick', this.props.clickHandler)
+    makeData(this.props.data, this.props.clickHandler)
 
 
   }
@@ -21,19 +15,21 @@ export default class Barcode extends Component {
   }
   //update when click-handler resends props
   componentWillReceiveProps(nextProps){
-    makeData(nextProps.data)
+    makeData(nextProps.data, this.props.clickHandler)
  }
 
   render() {
     return (<div>
-              <h2>Hi, I'm a Company</h2>
+              <h2>Hi, I'm a Company
+                click on my fields to change me!
+              </h2>
               <svg id="viz"/>
            </div>)
    }
 }
   
 
-const makeData = (data) => {
+const makeData = (data, clicker) => {
     let cl = []
     for (let field in data.cl){
      cl.push([field, data.cl[field]])
@@ -64,9 +60,8 @@ const makeData = (data) => {
           return "#64B5F6"
         }
       })
-      // .style('stroke-width', '1')
       .attr('class', 'companyLocus')
-
+      .on('click', () => { clicker();})
 
       let clLabel = clGroup.selectAll('.clLabel')
         .data(cl)
@@ -248,8 +243,6 @@ const makeData = (data) => {
         if(pufl[i][1] === '1.2') {
           return "#D8223F"
         }
-               
-
       })
     let puflLabel = puflGroup.selectAll('.puflLabel')
         .data(pufl)
@@ -260,6 +253,98 @@ const makeData = (data) => {
         .attr('stroke', 'black')
         .text((d, i) => pufl[i][1] )
 
+    let dom = []
+    for (let field in data.dom){
+      dom.push([field, data.dom[field]])
+    }
+    let domGroup = puflGroup.append('g')
+
+    let domBars = domGroup.selectAll('rect .bars')
+      .data(dom)
+      .enter()
+      .append('svg:rect')
+      .attr('x','80')
+      .attr('y', (d, i) => {
+         let height = i*25 + 460
+         return height
+      })
+      .attr('height', '25')
+      .attr('width', '100')
+      .style('stroke', 'none')
+      .style('fill', (d, i) => {
+        if (!dom[i][1]){
+          return '#565655'
+        }
+        if(dom[i][1] === '2.2'){
+          return '#FCC528'
+        }
+        if(dom[i][1] === 'B') {
+          return "#64B5F6"
+        }
+        if(dom[i][1] === 'A') {
+          return "#9575CD"
+        }
+        if(dom[i][1] === '3.1') {
+          return "#8BBA25"
+        }
+        if(dom[i][1] === '1.2') {
+          return "#D8223F"
+        }
+      })
+    let domLabel = domGroup.selectAll('.domLabel')
+        .data(dom)
+        .enter()
+        .append('svg:text')
+        .attr('x', '120')
+        .attr('y', (d, i) => i*25 + (460-5) + 25)
+        .attr('stroke', 'black')
+        .text((d, i) => dom[i][1] )
+
+    let cust = []
+    for (let field in data.cust){
+      cust.push([field, data.cust[field]])
+    }
+    let custGroup = domGroup.append('g')
+    let custBars = custGroup.selectAll('rect .bars')
+      .data(cust)
+      .enter()
+      .append('svg:rect')
+      .attr('x','80')
+      .attr('y', (d, i) => {
+         let height = i*25 + 580
+         return height
+      })
+      .attr('height', '25')
+      .attr('width', '100')
+      .style('stroke', 'none')
+      .style('fill', (d, i) => {
+        if (!cust[i][1]){
+          return '#565655'
+        }
+        if(cust[i][1] === '2.2'){
+          return '#FCC528'
+        }
+        if(cust[i][1] === 'B') {
+          return "#64B5F6"
+        }
+        if(cust[i][1] === 'A') {
+          return "#9575CD"
+        }
+        if(cust[i][1] === '3.1') {
+          return "#8BBA25"
+        }
+        if(cust[i][1] === '1.2') {
+          return "#D8223F"
+        }
+      })
+    let custLabel = custGroup.selectAll('.custLabel')
+        .data(cust)
+        .enter()
+        .append('svg:text')
+        .attr('x', '120')
+        .attr('y', (d, i) => i*25 + (580-5) + 25)
+        .attr('stroke', 'black')
+        .text((d, i) => cust[i][1] )
   
 } 
 

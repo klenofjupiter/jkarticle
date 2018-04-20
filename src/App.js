@@ -9,6 +9,8 @@ class App extends Component {
     this.state = {
       //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
       //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
+      status: "B2B",
+      distance: "3",
       barcode: {
          cl: {
           // name: "Company Loci",
@@ -80,7 +82,15 @@ class App extends Component {
 
 
     }
+
+    this.clickHandler = this.clickHandler.bind(this);
   }
+
+  clickHandler() {
+    console.log('i am a working clickHandler')
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -126,7 +136,7 @@ class App extends Component {
             <p>There are a number of other questions we could explore through this lens. For example, what are the domains in which B2B and B2C companies’ products are used? Or, is there a moderating effect of resource category on the variability in revenue observed in companies closer to consumers? We hope to continue exploring other ways of dissecting this data using our multi-attribute classification system.</p>
           </section>
         </article>
-        <Barcode className="barcode-viz grid-right" data={this.state.barcode}/>
+        <Barcode className="barcode-viz grid-right" data={this.state.barcode} status={this.state.status} distance={this.state.distance} clickHandler={this.clickHandler}/>
         </div>
       </div>
     );
