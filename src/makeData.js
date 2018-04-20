@@ -72,13 +72,19 @@ const makeData = (data, clicker) => {
 
     let f1Group = clGroup.append('g')
 
+    let f1Header = f1Group.append('text')
+      				.attr('x', '80')
+      				.attr('y', '120')
+      				.attr('stroke', 'black')
+      				.text('Intermediary 1')
+
     let firstInt = f1Group.selectAll('rect .bars')
       .data(f1)
       .enter()
       .append('svg:rect')
       .attr('x','80')
       .attr('y', (d, i) => {
-         let height = i*25 + 120
+         let height = i*25 + 125
          return height
       })
       .attr('height', '25')
@@ -95,7 +101,7 @@ const makeData = (data, clicker) => {
         .enter()
         .append('svg:text')
         .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (120-5) + 25)
+        .attr('y', (d, i) => i*25 + (120) + 25)
         .attr('stroke', 'black')
         .text((d, i) => f1[i][1] )
 
@@ -105,6 +111,12 @@ const makeData = (data, clicker) => {
     }
 
     let f2Group = f1Group.append('g')
+    
+    let f2Header = f2Group.append('text')
+      				.attr('x', '80')
+      				.attr('y', '240')
+      				.attr('stroke', 'black')
+      				.text('Intermediary 2')
 
     let secondInt = f2Group.selectAll('rect .bars')
       .data(f2)
@@ -112,7 +124,7 @@ const makeData = (data, clicker) => {
       .append('svg:rect')
       .attr('x','80')
       .attr('y', (d, i) => {
-         let height = i*25 + 240
+         let height = i*25 + 245
          return height
       })
       .attr('height', '25')
@@ -129,7 +141,7 @@ const makeData = (data, clicker) => {
         .enter()
         .append('svg:text')
         .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (240-5) + 25)
+        .attr('y', (d, i) => i*25 + (240) + 25)
         .attr('stroke', 'black')
         .text((d, i) => f2[i][1] )
 
@@ -138,13 +150,18 @@ const makeData = (data, clicker) => {
       cust.push([field, data.cust[field]])
     }
     let custGroup = f2Group.append('g')
+    let custHeader = custGroup.append('text')
+      				.attr('x', '79')
+      				.attr('y', '360')
+      				.attr('stroke', 'black')
+      				.text('Customer Loci')
     let custBars = custGroup.selectAll('rect .bars')
       .data(cust)
       .enter()
       .append('svg:rect')
       .attr('x','80')
       .attr('y', (d, i) => {
-         let height = i*25 + 360
+         let height = i*25 + 365
          return height
       })
       .attr('height', '25')
@@ -159,7 +176,7 @@ const makeData = (data, clicker) => {
         .enter()
         .append('svg:text')
         .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (360-5) + 25)
+        .attr('y', (d, i) => i*25 + (360) + 25)
         .attr('stroke', 'black')
         .text((d, i) => cust[i][1] )
 
@@ -169,13 +186,18 @@ const makeData = (data, clicker) => {
     }
 
     let cust2Group = custGroup.append('g')
+    let cust2Header = cust2Group.append('text')
+      				.attr('x', '50')
+      				.attr('y', '480')
+      				.attr('stroke', 'black')
+      				.text('Customer of Customer')
     let cust2Bars = cust2Group.selectAll('rect .bars')
       .data(cust2)
       .enter()
       .append('svg:rect')
       .attr('x','80')
       .attr('y', (d, i) => {
-         let height = i*25 + 480 
+         let height = i*25 + 485 
          return height
       })
       .attr('height', '25')
@@ -190,7 +212,7 @@ const makeData = (data, clicker) => {
         .enter()
         .append('svg:text')
         .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (480-5) + 25)
+        .attr('y', (d, i) => i*25 + (480) + 25)
         .attr('stroke', 'black')
         .text((d, i) => cust2[i][1] )
 
