@@ -9,88 +9,73 @@ class App extends Component {
     this.state = {
       //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
       //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
-      // barcode: {
-      //   companyLoci : {
-      //     dr: "", 
-      //     verb: "2.2", 
-      //     object: "B", 
-      //     io: "", 
-      //   }, 
-      //   intermediary1 : {
-      //     dr: "", 
-      //     verb: "2.2", 
-      //     object: "B", 
-      //     io: "", 
-      //   }, 
-      //   intermediary2: {
-      //     dr: "A", 
-      //     verb: "3.1", 
-      //     object: "B", 
-      //     io: "", 
-      //   }, 
-      //   productUseLoci: {
-      //     subject: "B", 
-      //     verb: "1.2", 
-      //     object: "B",
-      //   }, 
-      //   domain: {
-      //     dr: "B", 
-      //     verb: "1.2", 
-      //     object:"B", 
-      //     io:"", 
-      //   }, 
-      //   customerLoci: {
-      //     dr:"B", 
-      //     verb: "1.2", 
-      //     object: "B",
-      //   }, 
-      //   customerProductUseLoci: {
-      //     resourceLoci: {
-      //       subject: "B", 
-      //       verb: "2.2", 
-      //       object: "E",
-      //     }, 
-      //     workLoci: {
-      //       verb:"2.2", 
-      //       object:"E",
-      //     }
-      //   }, 
-      //   customerOfCustomer: {
-      //     verb: "2.2", 
-      //     object: "E",
-      //   }
-      // }, 
-      flatBarcode: {
-        cldr: "", 
-        clvb:"2.2", 
-        clobj:"B", 
-        clio: "", 
-        int1dr: "", 
-        int1verb: "2.2", 
-        int1obj: "B", 
-        int1io: "", 
-        int2dr: "A", 
-        int2verb: "3.1", 
-        int2obj: "B", 
-        int2io:"", 
-        pusub:"B", 
-        puverb:"1.2", 
-        puobj:"B", 
-        domdr:"B", 
-        domverb:"1.2",
-        domobj:"B", 
-        domio:"", 
-        custdr:"B", 
-        custverb:"1.2", 
-        custobj:"B", 
-        cpurlsubj:"B", 
-        cpurlverb:"2.2", 
-        cpurlobj: "E", 
-        cpuwlverb:"2.2", 
-        cpuwlobj:"E",
-        cust2verb:"2.2", 
-        cust2obj:"E",
-      }
+      barcode: {
+         cl: {
+          // name: "Company Loci",
+          dr: "", 
+          verb: "2.2", 
+          object: "B", 
+          io: "", 
+        }, 
+         f1: {
+          // name: "First Intermediary",
+          dr: "", 
+          verb: "2.2", 
+          object: "B", 
+          io: "", 
+        }, 
+        f2: {
+          // name: "Second Intermediary",
+          dr: "A", 
+          verb: "3.1", 
+          object: "B", 
+          io: "", 
+        }, 
+        pucl: {
+          // name: "Product Use Constituent Loci",
+          subject:"",
+          verb: "",
+          object: "",
+        },
+         pufl: {
+          // name: "Product Use Final Loci",
+          subject: "B", 
+          verb: "1.2", 
+          object: "B",
+        }, 
+        dom: {
+          // name: "Domain",
+          dr: "B", 
+          verb: "1.2", 
+          object:"B", 
+          io:"", 
+        }, 
+        cust: {
+          // name: "Customer Loci",
+          dr:"B", 
+          verb: "1.2", 
+          object: "B",
+          io:""
+        }, 
+        // customerProductUseLoci: {
+        //   resourceLoci: {
+        //     subject: "B", 
+        //     verb: "2.2", 
+        //     object: "E",
+        //   }, 
+        //   workLoci: {
+        //     verb:"2.2", 
+        //     object:"E",
+        //   }
+        // }, 
+        cust2: {
+          // name: "Customer of Customer Loci",
+          dr: "",
+          verb: "2.2", 
+          object: "E",
+          io: "",
+        }
+      }, 
 
     }
   }
@@ -139,7 +124,7 @@ class App extends Component {
             <p>There are a number of other questions we could explore through this lens. For example, what are the domains in which B2B and B2C companies’ products are used? Or, is there a moderating effect of resource category on the variability in revenue observed in companies closer to consumers? We hope to continue exploring other ways of dissecting this data using our multi-attribute classification system.</p>
           </section>
         </article>
-        <Barcode className="barcode-viz grid-right" data={this.state.flatBarcode}/>
+        <Barcode className="barcode-viz grid-right" data={this.state.barcode}/>
         </div>
       </div>
     );

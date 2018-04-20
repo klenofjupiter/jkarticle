@@ -1,3 +1,71 @@
+   // let ordinal = Object.keys(data)
+
+    // let outline = d3.select('#viz').selectAll('rect .bars')
+    //   .data(ordinal)
+    //   .enter()
+    //   .append('svg:rect')
+    //   .attr('x','80')
+    //   .attr('y', (d, i) => {
+    //      let height = i*25
+    //      return height
+    //   })
+    //   .attr('height', '25')
+    //   .attr('width', '100')
+    //   .style('stroke', 'black')
+    //   .style('fill', 'none')
+    //   .style('stroke-width', '1')
+
+
+    // let complex = []
+    //  for (let field in data) {
+    //     complex.push(data[field])
+    //  }
+
+    // let labels = d3.select('#viz').selectAll('.label')
+    //                .data(complex)
+    //                .enter()
+    //                .append('text')
+    //                .attr('x', '120' )
+    //                .attr('y', (d,i) => i*25-5)
+    //                .attr('class',' label')
+    //                .attr('stroke', '#28440c')
+    //                .text((d) => d)
+   
+   // let currentY = 25;
+   // data.forEach((datum, index) => {
+   //  let outline = d3.select('#viz').selectAll(`rect. bars ${datum.name}`)
+   //    .data(datum)
+   //    .enter()
+   //    .append('svg:rect')
+   //    .attr('x', '80')
+   //    .attr('y', (d, i) => {
+   //      return currentY + i*25
+   //    })
+   // })
+
+
+      let companyLoci = d3.select('#viz').selectAll('rect .bars companyLoci')
+   .data(data[0])
+   .enter()
+   .append('svg:rect')
+   .attr('x', '80')
+   .attr('y', (d,i) => i*25)
+   .attr('height', '25')
+   .attr('width', '100')
+   .style('stroke', 'black')
+   .style('fill', 'none')
+   .style('stroke-width', '1')
+
+   // let clLabels = d3.selectAll('rect .bars companyLoci')
+   // .append('text')
+   // .attr('x', '120')
+   // .attr('y', (d, i) => i*25-5)
+   // .attr('class', 'clLabels')
+   // .attr('stroke', 'black')
+   // .text((d) => d.name)
+
+
+
       barcode:{ "CofC Terminal Case 2": "", 
                "CofC Terminal Case 1": "", 
                "2012_NAICS": "112519", 
@@ -42,3 +110,48 @@
                 "CofC Work Group 2": "", 
                 "Intermediary 1 Type": "With Inventory", 
                 "Product Line": "Main"}
+
+                      // flatBarcode: {
+      //   cldr: "", 
+      //   clvb:"2.2", 
+      //   clobj:"B", 
+      //   clio: "", 
+      //   int1dr: "", 
+      //   int1verb: "2.2", 
+      //   int1obj: "B", 
+      //   int1io: "", 
+      //   int2dr: "A", 
+      //   int2verb: "3.1", 
+      //   int2obj: "B", 
+      //   int2io:"", 
+      //   pusub:"B", 
+      //   puverb:"1.2", 
+      //   puobj:"B", 
+      //   domdr:"B", 
+      //   domverb:"1.2",
+      //   domobj:"B", 
+      //   domio:"", 
+      //   custdr:"B", 
+      //   custverb:"1.2", 
+      //   custobj:"B", 
+      //   cpurlsubj:"B", 
+      //   cpurlverb:"2.2", 
+      //   cpurlobj: "E", 
+      //   cpuwlverb:"2.2", 
+      //   cpuwlobj:"E",
+      //   cust2verb:"2.2", 
+      //   cust2obj:"E",
+      // }
+
+
+         // let currentY = 25;
+   // data.forEach((datum, index) => {
+   //  let outline = d3.select('#viz').selectAll(`rect. bars ${datum.name}`)
+   //    .data(datum)
+   //    .enter()
+   //    .append('svg:rect')
+   //    .attr('x', '80')
+   //    .attr('y', (d, i) => {
+   //      return currentY + i*25
+   //    })
+   // })
