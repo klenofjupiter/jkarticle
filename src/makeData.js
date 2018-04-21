@@ -37,7 +37,7 @@ const makeData = (data, clicker, status) => {
 
   let intro = d3.select('#viz').append('text')
   			  .attr('x','10')
-  			  .attr('y', '800')
+  			  .attr('y', '620')
   			  .text(`Hi, I am a ${status} Company`)
   			  .on('click', () => {
   			  	clicker();
