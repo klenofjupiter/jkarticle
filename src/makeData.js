@@ -93,7 +93,6 @@ let barHeight = 25;
       	hide('.clEnglish')
       })
   	 .on('click', () => {
-  	 	console.log('um nope')
   		 clicker();
   	   })
       

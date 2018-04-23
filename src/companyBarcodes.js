@@ -1,7 +1,8 @@
 let book = [
    {
   	name: 'Costco Wholesale Corporation',
-  	status: 'B2C', 
+  	status: 'B2C',
+  	distance: '0',
         cl: {
           dr: "A", 
           verb: "3.1", 
@@ -35,7 +36,8 @@ let book = [
   }, 
   {
   	 name: 'The Hershey Company',
-  	 status: 'B2B', 
+  	 status: 'B2B',
+  	 distance: '1',  
         cl: {
           dr: "", 
           verb: "2.2", 
@@ -70,6 +72,7 @@ let book = [
   {
   	name: 'Anheuser-Busch Companies Inc.',
   	status: 'B2B',
+  	distance: '2', 
         cl: {
           dr: "", 
           verb: "2.2", 
@@ -104,6 +107,7 @@ let book = [
 { 
 	name: 'Sensient Technologies Corporation',
 	status: 'B2B',
+	distance: '3', 
         cl: {
           dr: "", 
           verb: "2.2", 
@@ -138,6 +142,7 @@ let book = [
 {
 	name: 'Diebold, Incorporated',
 	status: 'B2B',
+	distance: '4', 
         cl: {
           dr: "", 
           verb: "2.2", 
@@ -172,6 +177,7 @@ let book = [
  { 
  	name: 'Paychex, Inc.',
  	status: 'B2B',
+ 	distance: '5', 
         cl: {
           dr: "", 
           verb: "3.2", 

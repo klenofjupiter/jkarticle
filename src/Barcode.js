@@ -29,7 +29,7 @@ export default class Barcode extends Component {
   //update when click-handler resends props
   componentWillReceiveProps(nextProps){
     d3.selectAll("svg > *").remove();  //this prevents multiple instances of the svg tag from being drawn and crowding one another
-    makeData(nextProps.data, nextProps.clickHandler, this.props.status, this.props.distance)
+    makeData(nextProps.data, nextProps.clickHandler, nextProps.status, nextProps.distance)
       let score = document.getElementById('distance-score');
       let rect = score.getBoundingClientRect();
       if(rect.top > 0 && rect.top < window.innerHeight){
@@ -40,7 +40,6 @@ export default class Barcode extends Component {
  }
 
   render() {
-
     return (<svg id="viz" />)
    }
 }
