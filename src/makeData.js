@@ -19,19 +19,19 @@ let dictionary = {
 
 //dictionary of verbs and nouns to english
  let key = {
-  'A': 'Real Estate ',
-  'B': 'Machines ', 
-  'C': 'Information ', 
-  'D': 'Money ', 
-  'E': 'Energy ',
-  'F': 'People ',
-  '1.2':'Transports ',
-  '1.3': 'Houses ',
-  '2.2': 'Produces ',
-  '3.1': 'Sells ',
-  '3.2': 'Exchanges ', 
-  '3.3': 'Banks ',
-  'Div': 'Various ', 
+  'A': 'Real Estate',
+  'B': 'Machines', 
+  'C': 'Information', 
+  'D': 'Money', 
+  'E': 'Energy',
+  'F': 'People',
+  '1.2':'Transports',
+  '1.3': 'Houses',
+  '2.2': 'Produces',
+  '3.1': 'Sells',
+  '3.2': 'Exchanges', 
+  '3.3': 'Banks',
+  'Div': 'Various', 
 
  }
 
@@ -83,10 +83,10 @@ let barHeight = 25;
       })
       .attr('class', 'companyLocus')
       .on('mouseenter', () => {
-      	show('.clEnglish')
+      	show('.clCode')
       })
       .on('mouseleave', () =>{
-      	hide('.clEnglish')
+      	hide('.clCode')
       })
 
       
@@ -95,29 +95,26 @@ let barHeight = 25;
       					.attr('y', () => startHeight)
       					.attr('stroke', 'black')
       					.text('Company Locus')
-    let clTranslate = ""
 
-    cl.forEach((arr) => {
-       if(arr[1]){
-       	clTranslate+= key[arr[1]]
-       }
-    })
-
-    let clEnglish = clGroup.append('text')
-    						.attr('x', () => barLeft + 110 + "")
-    						.attr('y', () => barHeight * 2 + startHeight)
-    						.text(clTranslate)
-    						.attr('class','clEnglish')
 
       let clLabel = clGroup.selectAll('.clLabel')
         .data(cl)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 40 + "")
+        .attr('x', () => barLeft + 10 + "")
         .attr('y', (d, i) => i*barHeight -5 +barHeight +5 + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => cl[i][1] )
+        .text((d, i) => key[cl[i][1]])
 
+      let clLCS = clGroup.selectAll('.clCode')
+      			  .data(cl)
+      			  .enter()
+      			  .append('text')
+      			  .attr('class', 'clCode')
+      			  .attr('x', () => barLeft + 110)
+      			  .attr('y', (d,i) => i * barHeight -5 + barHeight +5 + startHeight)
+      			  .attr('stroke', 'black')
+      			  .text((d,i) => cl[i][1])
     
     let f1 = []
     for (let field in data.f1){
@@ -150,34 +147,31 @@ let barHeight = 25;
       })
       .attr('class', 'firstInt')
       .on('mouseenter', () => {
-      	show('.f1English')
+      	show('.f1Code')
       })
       .on('mouseleave', () =>{
-      	hide('.f1English')
+      	hide('.f1Code')
       })
 
       let f1Label = clGroup.selectAll('.f1Label')
         .data(f1)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 40 + "")
+        .attr('x', () => barLeft + 10 )
         .attr('y', (d, i) => i*barHeight + (120) + 25 + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => f1[i][1] )
+        .text((d, i) => key[f1[i][1]] )
    
-    let f1Translate = ""
+      let f1LCS = f1Group.selectAll('.f1Code')
+      			  .data(f1)
+      			  .enter()
+      			  .append('text')
+      			  .attr('class', 'f1Code')
+      			  .attr('x', () => barLeft + 110)
+      			  .attr('y', (d, i) => i*barHeight + (120) + 25 + startHeight)
+      			  .attr('stroke', 'black')
+      			  .text((d,i) => f1[i][1])
 
-    f1.forEach((arr) => {
-       if(arr[1]){
-       	f1Translate+= key[arr[1]]
-       }
-    })
-
-    let f1English = f1Group.append('text')
-    						.attr('x', () => barLeft + 110 + "")
-    						.attr('y', () => 180 + startHeight)
-    						.text(f1Translate)
-    						.attr('class','f1English')
 
     let f2 = []
     for (let field in data.f2){
@@ -210,33 +204,31 @@ let barHeight = 25;
 
       })
       .on('mouseenter', () => {
-      	show('.f2English')
+      	show('.f2Code')
       })
       .on('mouseleave', () =>{
-      	hide('.f2English')
+      	hide('.f2Code')
       })
 
       let f2Label = f2Group.selectAll('.f2Label')
         .data(f2)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 40 + "")
+        .attr('x', () => barLeft + 10 + "")
         .attr('y', (d, i) => i * barHeight + (240) + barHeight + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => f2[i][1] )
+        .text((d, i) => key[f2[i][1]] )
     let f2Translate = ""
 
-    f2.forEach((arr) => {
-       if(arr[1]){
-       	f2Translate+= key[arr[1]]
-       }
-    })
-
-    let f2English = f2Group.append('text')
-    						.attr('x', () => barLeft + 110 + "")
-    						.attr('y', () => 290 + startHeight)
-    						.text(f2Translate)
-    						.attr('class','f2English')
+     let f2LCS = f2Group.selectAll('.f2Code')
+      			  .data(f2)
+      			  .enter()
+      			  .append('text')
+      			  .attr('class', 'f2Code')
+      			  .attr('x', () => barLeft + 110)
+        		  .attr('y', (d, i) => i * barHeight + (240) + barHeight + startHeight)
+      			  .attr('stroke', 'black')
+      			  .text((d,i) => f2[i][1])
 
     let cust = []
     for (let field in data.cust){
@@ -265,32 +257,29 @@ let barHeight = 25;
         return dictionary[cust[i][1]]
       })
       .on('mouseenter', () => {
-      	show('.custEnglish')
+      	show('.custCode')
       })
       .on('mouseleave', () =>{
-      	hide('.custEnglish')
+      	hide('.custCode')
       })
     let custLabel = custGroup.selectAll('.custLabel')
         .data(cust)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 40 + "")
+        .attr('x', () => barLeft + 10 + "")
         .attr('y', (d, i) => i * barHeight + (360) + barHeight + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => cust[i][1] )
-    let custTranslate = ""
-
-    cust.forEach((arr) => {
-       if(arr[1]){
-       	custTranslate+= key[arr[1]]
-       }
-    })
-
-    let custEnglish = custGroup.append('text')
-    						.attr('x', () => barLeft + 110 + "")
-    						.attr('y', () => 420 + startHeight)
-    						.text(custTranslate)
-    						.attr('class','custEnglish')
+        .text((d, i) => key[cust[i][1]] )
+  
+     let custLCS = custGroup.selectAll('.custCode')
+      			  .data(cust)
+      			  .enter()
+      			  .append('text')
+      			  .attr('class', 'custCode')
+      			  .attr('x', () => barLeft + 110)
+        		  .attr('y', (d, i) => i * barHeight + (360) + barHeight + startHeight)
+      			  .attr('stroke', 'black')
+      			  .text((d,i) => cust[i][1])
 
     let cust2 = []
     for (let field in data.cust2){
@@ -298,11 +287,13 @@ let barHeight = 25;
     }
 
     let cust2Group = custGroup.append('g')
+
     let cust2Header = cust2Group.append('text')
       				.attr('x', () => barLeft - 20  + "")
       				.attr('y', () => 480 + startHeight)
       				.attr('stroke', 'black')
       				.text('Customer of Customer')
+
     let cust2Bars = cust2Group.selectAll('rect .bars')
       .data(cust2)
       .enter()
@@ -320,33 +311,31 @@ let barHeight = 25;
         return dictionary[cust2[i][1]]
       })
       .on('mouseenter', () => {
-      	show('.cust2English')
+      	show('.cust2Code')
       })
       .on('mouseleave', () =>{
-      	hide('.cust2English')
+      	hide('.cust2Code')
       })
     let cust2Label = cust2Group.selectAll('.custLabel')
         .data(cust2)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 40 +"")
+        .attr('x', () => barLeft + 10 +"")
         .attr('y', (d, i) => i*barHeight + (480) + barHeight + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => cust2[i][1] )
+        .text((d, i) => key[cust2[i][1]] )
 
-    let cust2Translate = ""
+     let cust2LCS = cust2Group.selectAll('.cust2Code')
+      			  .data(cust2)
+      			  .enter()
+      			  .append('text')
+      			  .attr('class', 'cust2Code')
+      			  .attr('x', () => barLeft + 110)
+        		  .attr('y', (d, i) => i * barHeight + (480) + barHeight + startHeight)
+      			  .attr('stroke', 'black')
+      			  .text((d,i) => cust2[i][1])
 
-    cust2.forEach((arr) => {
-       if(arr[1]){
-       	cust2Translate+= key[arr[1]]
-       }
-    })
 
-    let cust2English = cust2Group.append('text')
-    						.attr('x', () => barLeft + 110 + "")
-    						.attr('y', () => 540 + startHeight)
-    						.text(cust2Translate)
-    						.attr('class','cust2English')
 
    let distanceGroup = d3.select('#viz').append('g')
    								 .on('click', () => {
@@ -369,6 +358,7 @@ let barHeight = 25;
     				.on('click', () => {
     					businessClicker();
     				})
+    				.attr('class', 'narrative')
 
     let narrative1 = narrativeGroup.append('text')
     				.attr('x', () => barLeft + 150)

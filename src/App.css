@@ -18,10 +18,13 @@
 }
 .grid-left {
  grid-column-start: 1;
+ margin-left: 20px;
 }
 
 .grid-right {
   grid-column-start: 2;
+  margin-right: 0;
+  padding-right: 0;
  }
 .fixed {
   position:fixed;
@@ -29,19 +32,19 @@
 .intro-barcode {
   font-size: 1.5em;
 }
-.clEnglish {
+.clCode {
   display: none;
 }
-.f1English {
+.f1Code {
   display: none;
 }
-.f2English {
+.f2Code {
   display: none;
 }
-.custEnglish {
+.custCode {
   display: none;
 }
-.cust2English {
+.cust2Code {
   display: none;
 }
 .distance-toggle {
@@ -51,6 +54,10 @@
 .makeViz{
   display: block;
 }
+.narrative {
+  font-size: 1.25em;
+}
+
 div.barcode-wrapper > h2 {
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -73,6 +80,8 @@ svg {
   position: sticky;
   top: 0;
   padding-top: 25px;
+  padding-right: 0px;
+  margin-right: 0px;
 }
 article {
   padding-left: 10px;
