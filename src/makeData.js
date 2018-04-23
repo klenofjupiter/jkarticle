@@ -55,7 +55,7 @@ let barHeight = 25;
   let intro = d3.select('#viz').append('text')
   			  .attr('x', () => barLeft)
   			  .attr('y', '0')
-  			  .text(`Hi, I am a ${status} Company.`)
+  			  .text(`Hi, I'm ${data.name}`)
   			  .attr('class', 'intro-barcode')
 
     let cl = []
@@ -348,11 +348,20 @@ let barHeight = 25;
    							.attr('y', () => startHeight + 80)
    							.text(`I have a distance score of ${distance}.`)
    							.attr('class', 'distance-toggle')
+   							//change below to talk about how distance score is calculated
     let distanceSwitch = distanceGroup.append('text')
     						.attr('x', () => barLeft + 150)
     						.attr('y', startHeight + 100)
     						.attr('class', 'distance-toggle')
-    						.text('click here to change my score.')
+    						.text(() => {
+    						  if(distance == 0){
+    						  	return 'My customer is the final consumer'
+    						  } else if(distance == 1){
+    						  	return 'There is one step between me and the consumer'
+    						  } else {
+    						  	return 'There are several steps between me and the consumer'
+    						  }
+    						})
 
     let narrativeGroup = d3.select('#viz').append('g')
     				.on('click', () => {
@@ -363,18 +372,24 @@ let barHeight = 25;
     let narrative1 = narrativeGroup.append('text')
     				.attr('x', () => barLeft + 150)
     				.attr('y', () => startHeight + 10)
-    				.text(() => `My name is ${data.name},`)
+    				.text(() => `I'm a ${data.status} company.`)
 
     let narrative2 = narrativeGroup.append('text')
     				.attr('x', () => barLeft + 150)
     				.attr('y', () => startHeight + 30)
-    				.text(() => `I'm a ${data.status} company`)
+    				.text(() => {
+    				 if(status === 'B2C'){
+    				 	return 'I deliver directly to consumers.'
+    				 }else{
+    				 	return 'I work with other businesses.'
+    				 }
+    				})
 
 
     let narrative3 = narrativeGroup.append('text')
     				.attr('x', () => barLeft + 150)
     				.attr('y', () => startHeight+50)
-    				.text('click here to change my type')
+    				.text('click here to change my status')
 
 
 } 
