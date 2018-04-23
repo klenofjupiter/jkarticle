@@ -348,7 +348,7 @@ let barHeight = 25;
    							.attr('y', () => startHeight + 80)
    							.text(`I have a distance score of ${distance}.`)
    							.attr('class', 'distance-toggle')
-   							//change below to talk about how distance score is calculated
+   							
     let distanceSwitch = distanceGroup.append('text')
     						.attr('x', () => barLeft + 150)
     						.attr('y', startHeight + 100)
