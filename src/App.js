@@ -1,74 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import book from './companyBarcodes'
 import Barcode from './Barcode.js'
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
-      //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
-      status: "B2B",
-      distance: "3",
-      barcode: {
-         cl: {
-          // name: "Company Loci",
-          dr: "", 
-          verb: "2.2", 
-          object: "B", 
-          io: "", 
-        }, 
-         f1: {
-          // name: "First Intermediary",
-          dr: "", 
-          verb: "2.2", 
-          object: "B", 
-          io: "", 
-        }, 
-        f2: {
-          // name: "Second Intermediary",
-          dr: "A", 
-          verb: "3.1", 
-          object: "B", 
-          io: "", 
-        },  
-        cust: {
-          // name: "Customer Loci",
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
-          io:""
-        }, 
-        cust2: {
-          // name: "Customer of Customer Loci",
-          dr: "",
-          verb: "2.2", 
-          object: "E",
-          io: "",
-        }
-
-      }, 
-
-
+      //distance score is now equal to barcode index
+      barcodeIndex: 0, 
     }
-
     this.clickHandler = this.clickHandler.bind(this);
   }
 
   clickHandler() {
     console.log('gonna handle my click')
-    if(this.state.status === 'B2B'){ 
-      this.setState({status: "B2C"}) 
-     }else{
-      this.setState({status:"B2B"})
-     }
+    if (this.state.barcodeIndex < 4) {
+      let newInd = this.state.barcodeIndex + 1
+      this.setState({barcodeIndex : newInd})
+    }else{
+      this.setState({barcodeIndex: 0})
+    }
     // all click handlers must over-write the entire barcode otherwise it will get CERAZY
     // this.setState({barcode:{...this.state.barcode, cpul:{...this.state.barcode.cpul, object:"A"}}})
   }
 
 
   render() {
+    console.log('company name', book[this.state.barcodeIndex].name)
     return (
       <div className="App">
         <header className="App-header">
@@ -113,7 +72,7 @@ class App extends Component {
             <p>There are a number of other questions we could explore through this lens. For example, what are the domains in which B2B and B2C companies’ products are used? Or, is there a moderating effect of resource category on the variability in revenue observed in companies closer to consumers? We hope to continue exploring other ways of dissecting this data using our multi-attribute classification system.</p>
           </section>
         </article>
-        <Barcode className="barcode-viz grid-right" data={this.state.barcode} status={this.state.status} distance={this.state.distance} clickHandler={this.clickHandler}/>
+        <Barcode className="barcode-viz grid-right" data={book[this.state.barcodeIndex]} status={book[this.state.barcodeIndex].status} distance={this.state.barcodeIndex} clickHandler={this.clickHandler}/>
         </div>
       </div>
     );

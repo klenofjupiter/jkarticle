@@ -1,13 +1,19 @@
 import * as d3 from 'd3';
 //dictionary of verbs and nouns to colors
 let dictionary = {
- 'empty': '#565655',
- '2.2' : '#FCC528',
-  'B' : '#64B5F6',
+ 'empty': '#616261',
+  '1.2' : '#D8223F',
+  '1.3' : '#E9611E',
+  '2.2' : '#FCC528',
+  '3.1' : '#8BBA25',
+  '3.2' : '#018D5A', 
+  '3.3' : '#1395BA',
   'A': '#9575CD', 
-  '3.1': '#8BBA25',
-  '1.2': '#D8223F', 
-  'E':  '#FFB74D',
+  'B' : '#64B5F6', 
+  'C' : '#81C784',
+  'D' : '#FFF176',
+  'E' :  '#FFB74D',
+  'F' : '#EF5350',
  }
 
 //dictionary of verbs and nouns to english
@@ -35,15 +41,16 @@ export function hide(group){
 
 const makeData = (data, clicker, status, distance) => {
 
-let startHeight = 0;
+let startHeight = 50;
 let barLeft = 20;
 let barHeight = 25;
 
   let intro = d3.select('#viz').append('text')
-  			  .attr('x', () => barLeft + 130)
-  			  .attr('y', startHeight)
+  			  .attr('x', () => barLeft)
+  			  .attr('y', '0')
   			  .text(`Hi, I am a ${status} Company.`)
   			  .on('click', () => {
+  			  	console.log('hi what')
   			  	clicker();
   			  })
   			  .attr('class', 'intro-barcode')
@@ -78,6 +85,10 @@ let barHeight = 25;
       .on('mouseleave', () =>{
       	hide('.clEnglish')
       })
+  	 .on('click', () => {
+  	 	console.log('um nope')
+  		 clicker();
+  	   })
       
      let clHeader = clGroup.append('text')
       					.attr('x', () => barLeft-10 + "")
@@ -338,8 +349,8 @@ let barHeight = 25;
     						.attr('class','cust2English')
 
    let distanceScore = cust2Group.append('text')
-  			                .attr('x', () => barLeft + 130)
-   							.attr('y', () => 30 + startHeight)
+  			                .attr('x', () => barLeft )
+   							.attr('y', () => 30)
    							.text(`I have a distance score of ${distance}`)
    							.attr('class', 'distance-toggle')
 
