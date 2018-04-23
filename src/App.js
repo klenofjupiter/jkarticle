@@ -96,7 +96,7 @@ class App extends Component {
             <span>chart goes here</span> <span>chart goes here</span>
           </section>
           <section className="Proximity-to-Consumers">
-            <h2>Proximity to Consumers</h2>
+            <h2 id="distance-score">Proximity to Consumers</h2>
             <p>Applying this algorithm to all companies in our dataset, we arrive at distance scores between 0 (company interacts directly with the consumer) and 5 (company is several steps removed from consumers). The advantage of this method is being able to differentiate B2B companies that are closer to consumers and for whom consumer brand perception matters more (e.g. Apple, Ford — both with scores of 1) from those more squarely in the B2B category (e.g. Boeing, IBM — scores of 4 and 5, respectively).</p>
             <p>Looking at the average revenue per company (left) in each of these groups, it is clear that the companies closer to consumers (denoted with blue lines) have higher revenue than those more distant. However, the median revenue (right) — which is less susceptible to extreme values — shows no distinct pattern. </p>
             <span>chart goes here</span> <span>chart goes here</span>

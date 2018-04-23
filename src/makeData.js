@@ -42,6 +42,7 @@ const makeData = (data, clicker, status) => {
   			  .on('click', () => {
   			  	clicker();
   			  })
+  			  .attr('id', 'intro')
 
     let cl = []
     for (let field in data.cl){
