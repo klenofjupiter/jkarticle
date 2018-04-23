@@ -24,7 +24,6 @@ export default class Barcode extends Component {
       })
   }
   shouldComponentUpdate(nextProps) { 
-    // if(nextProps.status !== this.props.status) return true;
     return false;
   }
   //update when click-handler resends props

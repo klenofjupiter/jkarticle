@@ -21,20 +21,20 @@ let book = [
           io: "", 
         },  
         cust: {
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
+          dr:"", 
+          verb: "1.3", 
+          object: "F",
           io:""
         }, 
         cust2: {
           dr: "",
-          verb: "2.2", 
-          object: "E",
+          verb: "", 
+          object: "",
           io: "",
         }
   }, 
   {
-  	 name: 'Hershey',
+  	 name: 'The Hershey Company',
   	 status: 'B2B', 
         cl: {
           dr: "", 
@@ -55,15 +55,15 @@ let book = [
           io: "", 
         },  
         cust: {
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
+          dr:"", 
+          verb: "1.3", 
+          object: "F",
           io:""
         }, 
         cust2: {
           dr: "",
-          verb: "2.2", 
-          object: "E",
+          verb: "", 
+          object: "",
           io: "",
         }
   }, 
@@ -89,15 +89,15 @@ let book = [
           io: "", 
         },  
         cust: {
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
+          dr:"", 
+          verb: "1.3", 
+          object: "F",
           io:""
         }, 
         cust2: {
           dr: "",
-          verb: "2.2", 
-          object: "E",
+          verb: "", 
+          object: "",
           io: "",
         }
   }, 
@@ -123,15 +123,15 @@ let book = [
           io: "", 
         },  
         cust: {
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
+          dr:"", 
+          verb: "1.3", 
+          object: "F",
           io:""
         }, 
         cust2: {
           dr: "",
-          verb: "2.2", 
-          object: "E",
+          verb: "", 
+          object: "",
           io: "",
         }
   }, 
@@ -157,15 +157,15 @@ let book = [
           io: "", 
         },  
         cust: {
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
+          dr:"", 
+          verb: "3.3", 
+          object: "D",
           io:""
         }, 
         cust2: {
           dr: "",
-          verb: "2.2", 
-          object: "E",
+          verb: "1.3", 
+          object: "F",
           io: "",
         }
   }, 
@@ -191,15 +191,15 @@ let book = [
           io: "", 
         },  
         cust: {
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
+          dr:"", 
+          verb: "Div", 
+          object: "Div",
           io:""
         }, 
         cust2: {
           dr: "",
-          verb: "2.2", 
-          object: "E",
+          verb: "", 
+          object: "",
           io: "",
         }
   }, 

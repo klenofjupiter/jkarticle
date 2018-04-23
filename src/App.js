@@ -15,7 +15,7 @@ class App extends Component {
 
   clickHandler() {
     console.log('gonna handle my click')
-    if (this.state.barcodeIndex < 4) {
+    if (this.state.barcodeIndex < 5) {
       let newInd = this.state.barcodeIndex + 1
       this.setState({barcodeIndex : newInd})
     }else{

@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 //dictionary of verbs and nouns to colors
 let dictionary = {
- 'empty': '#616261',
+ 'empty': '#E3E3E3',
   '1.2' : '#D8223F',
   '1.3' : '#E9611E',
   '2.2' : '#FCC528',
@@ -14,6 +14,7 @@ let dictionary = {
   'D' : '#FFF176',
   'E' :  '#FFB74D',
   'F' : '#EF5350',
+  'Div': '#616261',
  }
 
 //dictionary of verbs and nouns to english
