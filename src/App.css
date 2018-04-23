@@ -13,7 +13,7 @@
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 40% 60%;
   grid-column-gap: 50px;
 }
 .grid-left {
@@ -25,6 +25,9 @@
  }
 .fixed {
   position:fixed;
+}
+.intro-barcode {
+  font-size: 1.5em;
 }
 .clEnglish {
   display: none;
@@ -39,6 +42,9 @@
   display: none;
 }
 .cust2English {
+  display: none;
+}
+.distance-toggle {
   display: none;
 }
 .makeViz{

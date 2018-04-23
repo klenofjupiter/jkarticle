@@ -23,26 +23,30 @@ let dictionary = {
  }
 
 //helper functions for hover-labels
-function show(group) {
+export function show(group) {
      let selection = d3.selectAll(group)
      .classed('makeViz', true)
  }
 
-function hide(group){
+export function hide(group){
      d3.selectAll(group)
      .classed('makeViz', false)
  }
 
-const makeData = (data, clicker, status) => {
+const makeData = (data, clicker, status, distance) => {
+
+let startHeight = 0;
+let barLeft = 20;
+let barHeight = 25;
 
   let intro = d3.select('#viz').append('text')
-  			  .attr('x','10')
-  			  .attr('y', '620')
-  			  .text(`Hi, I am a ${status} Company`)
+  			  .attr('x', () => barLeft + 130)
+  			  .attr('y', startHeight)
+  			  .text(`Hi, I am a ${status} Company.`)
   			  .on('click', () => {
   			  	clicker();
   			  })
-  			  .attr('id', 'intro')
+  			  .attr('class', 'intro-barcode')
 
     let cl = []
     for (let field in data.cl){
@@ -55,12 +59,12 @@ const makeData = (data, clicker, status) => {
       .data(cl)
       .enter()
       .append('svg:rect')
-      .attr('x','80')
+      .attr('x',() => barLeft + "")
       .attr('y', (d, i) => {
-         let height = i*25
-         return height +5
+         let height = i * barHeight 
+         return height +5 + startHeight
       })
-      .attr('height', '25')
+      .attr('height', () => barHeight + "")
       .attr('width', '100')
       .style('stroke', 'none')
       .style('fill', (d, i) => {
@@ -76,8 +80,8 @@ const makeData = (data, clicker, status) => {
       })
       
      let clHeader = clGroup.append('text')
-      					.attr('x', '70')
-      					.attr('y', '0')
+      					.attr('x', () => barLeft-10 + "")
+      					.attr('y', () => startHeight)
       					.attr('stroke', 'black')
       					.text('Company Locus')
     let clTranslate = ""
@@ -89,8 +93,8 @@ const makeData = (data, clicker, status) => {
     })
 
     let clEnglish = clGroup.append('text')
-    						.attr('x', '190')
-    						.attr('y', '60')
+    						.attr('x', () => barLeft + 110 + "")
+    						.attr('y', () => barHeight * 2 + startHeight)
     						.text(clTranslate)
     						.attr('class','clEnglish')
 
@@ -98,8 +102,8 @@ const makeData = (data, clicker, status) => {
         .data(cl)
         .enter()
         .append('svg:text')
-        .attr('x', '120')
-        .attr('y', (d, i) => i*25 -5 +25 +5)
+        .attr('x', () => barLeft + 40 + "")
+        .attr('y', (d, i) => i*barHeight -5 +barHeight +5 + startHeight)
         .attr('stroke', 'black')
         .text((d, i) => cl[i][1] )
 
@@ -112,8 +116,8 @@ const makeData = (data, clicker, status) => {
     let f1Group = clGroup.append('g')
 
     let f1Header = f1Group.append('text')
-      				.attr('x', '80')
-      				.attr('y', '120')
+      				.attr('x', () => barLeft + "")
+      				.attr('y', () => 120 + startHeight)
       				.attr('stroke', 'black')
       				.text('Intermediary 1')
 
@@ -121,9 +125,9 @@ const makeData = (data, clicker, status) => {
       .data(f1)
       .enter()
       .append('svg:rect')
-      .attr('x','80')
+      .attr('x',() => barLeft + "")
       .attr('y', (d, i) => {
-         let height = i*25 + 125
+         let height = i* barHeight + 125 + startHeight
          return height
       })
       .attr('height', '25')
@@ -145,8 +149,8 @@ const makeData = (data, clicker, status) => {
         .data(f1)
         .enter()
         .append('svg:text')
-        .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (120) + 25)
+        .attr('x', () => barLeft + 40 + "")
+        .attr('y', (d, i) => i*barHeight + (120) + 25 + startHeight)
         .attr('stroke', 'black')
         .text((d, i) => f1[i][1] )
    
@@ -159,8 +163,8 @@ const makeData = (data, clicker, status) => {
     })
 
     let f1English = f1Group.append('text')
-    						.attr('x', '190')
-    						.attr('y', '180')
+    						.attr('x', () => barLeft + 110 + "")
+    						.attr('y', () => 180 + startHeight)
     						.text(f1Translate)
     						.attr('class','f1English')
 
@@ -172,8 +176,8 @@ const makeData = (data, clicker, status) => {
     let f2Group = f1Group.append('g')
     
     let f2Header = f2Group.append('text')
-      				.attr('x', '80')
-      				.attr('y', '240')
+      				.attr('x', () => barLeft + "")
+      				.attr('y', () => 240 + startHeight)
       				.attr('stroke', 'black')
       				.text('Intermediary 2')
 
@@ -181,9 +185,9 @@ const makeData = (data, clicker, status) => {
       .data(f2)
       .enter()
       .append('svg:rect')
-      .attr('x','80')
+      .attr('x',() => barLeft + "")
       .attr('y', (d, i) => {
-         let height = i*25 + 245
+         let height = i * barHeight + 245 + startHeight
          return height
       })
       .attr('height', '25')
@@ -205,8 +209,8 @@ const makeData = (data, clicker, status) => {
         .data(f2)
         .enter()
         .append('svg:text')
-        .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (240) + 25)
+        .attr('x', () => barLeft + 40 + "")
+        .attr('y', (d, i) => i * barHeight + (240) + barHeight + startHeight)
         .attr('stroke', 'black')
         .text((d, i) => f2[i][1] )
     let f2Translate = ""
@@ -218,8 +222,8 @@ const makeData = (data, clicker, status) => {
     })
 
     let f2English = f2Group.append('text')
-    						.attr('x', '190')
-    						.attr('y', '290')
+    						.attr('x', () => barLeft + 110 + "")
+    						.attr('y', () => 290 + startHeight)
     						.text(f2Translate)
     						.attr('class','f2English')
 
@@ -229,17 +233,17 @@ const makeData = (data, clicker, status) => {
     }
     let custGroup = f2Group.append('g')
     let custHeader = custGroup.append('text')
-      				.attr('x', '79')
-      				.attr('y', '360')
+      				.attr('x', () => barLeft - 1 + "")
+      				.attr('y', () => 360 + startHeight)
       				.attr('stroke', 'black')
       				.text('Customer Loci')
     let custBars = custGroup.selectAll('rect .bars')
       .data(cust)
       .enter()
       .append('svg:rect')
-      .attr('x','80')
+      .attr('x',() => barLeft + "")
       .attr('y', (d, i) => {
-         let height = i*25 + 365
+         let height = i * barHeight + 365 + startHeight
          return height
       })
       .attr('height', '25')
@@ -259,8 +263,8 @@ const makeData = (data, clicker, status) => {
         .data(cust)
         .enter()
         .append('svg:text')
-        .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (360) + 25)
+        .attr('x', () => barLeft + 40 + "")
+        .attr('y', (d, i) => i * barHeight + (360) + barHeight + startHeight)
         .attr('stroke', 'black')
         .text((d, i) => cust[i][1] )
     let custTranslate = ""
@@ -272,8 +276,8 @@ const makeData = (data, clicker, status) => {
     })
 
     let custEnglish = custGroup.append('text')
-    						.attr('x', '190')
-    						.attr('y', '420')
+    						.attr('x', () => barLeft + 110 + "")
+    						.attr('y', () => 420 + startHeight)
     						.text(custTranslate)
     						.attr('class','custEnglish')
 
@@ -284,17 +288,17 @@ const makeData = (data, clicker, status) => {
 
     let cust2Group = custGroup.append('g')
     let cust2Header = cust2Group.append('text')
-      				.attr('x', '50')
-      				.attr('y', '480')
+      				.attr('x', () => barLeft - 20  + "")
+      				.attr('y', () => 480 + startHeight)
       				.attr('stroke', 'black')
       				.text('Customer of Customer')
     let cust2Bars = cust2Group.selectAll('rect .bars')
       .data(cust2)
       .enter()
       .append('svg:rect')
-      .attr('x','80')
+      .attr('x', () => barLeft + "")
       .attr('y', (d, i) => {
-         let height = i*25 + 485 
+         let height = i * barHeight + 485 + startHeight
          return height
       })
       .attr('height', '25')
@@ -314,8 +318,8 @@ const makeData = (data, clicker, status) => {
         .data(cust2)
         .enter()
         .append('svg:text')
-        .attr('x', '120')
-        .attr('y', (d, i) => i*25 + (480) + 25)
+        .attr('x', () => barLeft + 40 +"")
+        .attr('y', (d, i) => i*barHeight + (480) + barHeight + startHeight)
         .attr('stroke', 'black')
         .text((d, i) => cust2[i][1] )
 
@@ -328,12 +332,16 @@ const makeData = (data, clicker, status) => {
     })
 
     let cust2English = cust2Group.append('text')
-    						.attr('x', '190')
-    						.attr('y', '540')
+    						.attr('x', () => barLeft + 110 + "")
+    						.attr('y', () => 540 + startHeight)
     						.text(cust2Translate)
     						.attr('class','cust2English')
 
-
+   let distanceScore = cust2Group.append('text')
+  			                .attr('x', () => barLeft + 130)
+   							.attr('y', () => 30 + startHeight)
+   							.text(`I have a distance score of ${distance}`)
+   							.attr('class', 'distance-toggle')
 
 } 
 export default makeData;
