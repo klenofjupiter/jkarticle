@@ -46,6 +46,7 @@
 }
 .distance-toggle {
   display: none;
+  background-color: red;
 }
 .makeViz{
   display: block;

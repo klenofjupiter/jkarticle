@@ -8,31 +8,31 @@ class App extends Component {
     super();
     this.state = {
       barcodeIndex: 0,
-      // status: 'B2C', 
-      // distance: 0,
     };
-    this.clickHandler = this.clickHandler.bind(this);
+    this.distanceClicker = this.distanceClicker.bind(this);
+    this.businessClicker = this.businessClicker.bind(this);
+
   }
 
-  clickHandler() {
+  distanceClicker() {
+
     if (this.state.barcodeIndex < 5) {
-      let newInd = 1 + this.state.barcodeIndex 
-      // if(this.state.status === 'B2C'){
-      //   this.setState({ status: 'B2B'})
-      // }
+      let newInd = (++this.state.barcodeIndex)
+      console.log('distancey', newInd)
       this.setState({barcodeIndex : newInd})
-      // this.setState({distance: newInd})
-
-
     }else{
       this.setState({barcodeIndex: 0})
-      // this.setState({status: 'B2C'})
-      // this.setState({distance: 0})
     }
-
-
   }
-
+  
+  businessClicker() {
+    // console.log('i had better not fire')
+    if(this.state.barcodeIndex !== 0){
+      this.setState({barcodeIndex: 0})
+    }else{
+      this.setState({barcodeIndex: 1})
+    }
+  }
 
   render() {
     // console.log('company name', book[this.state.barcodeIndex].name, book[this.state.barcodeIndex].status)
@@ -80,7 +80,7 @@ class App extends Component {
             <p>There are a number of other questions we could explore through this lens. For example, what are the domains in which B2B and B2C companies’ products are used? Or, is there a moderating effect of resource category on the variability in revenue observed in companies closer to consumers? We hope to continue exploring other ways of dissecting this data using our multi-attribute classification system.</p>
           </section>
         </article>
-        <Barcode className="barcode-viz grid-right" data={book[this.state.barcodeIndex]} status={book[this.state.barcodeIndex].status} distance={book[this.state.barcodeIndex].distance} clickHandler={this.clickHandler}/>
+        <Barcode className="barcode-viz grid-right" data={book[this.state.barcodeIndex]} status={book[this.state.barcodeIndex].status} distance={book[this.state.barcodeIndex].distance} distanceClicker={this.distanceClicker} businessClicker={this.businessClicker}/>
         </div>
       </div>
     );

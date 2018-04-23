@@ -4,7 +4,7 @@ import makeData, { show, hide } from './makeData'
 export default class Barcode extends Component {
 
   componentDidMount() {
-    makeData(this.props.data, this.props.clickHandler, this.props.status, this.props.distance)
+    makeData(this.props.data, this.props.distanceClicker, this.props.status, this.props.distance, this.props.businessClicker)
 
       let score = document.getElementById('distance-score');
       let rect = score.getBoundingClientRect();
@@ -29,7 +29,7 @@ export default class Barcode extends Component {
   //update when click-handler resends props
   componentWillReceiveProps(nextProps){
     d3.selectAll("svg > *").remove();  //this prevents multiple instances of the svg tag from being drawn and crowding one another
-    makeData(nextProps.data, nextProps.clickHandler, nextProps.status, nextProps.distance)
+    makeData(nextProps.data, nextProps.distanceClicker, nextProps.status, nextProps.distance, nextProps.businessClicker)
       let score = document.getElementById('distance-score');
       let rect = score.getBoundingClientRect();
       if(rect.top > 0 && rect.top < window.innerHeight){

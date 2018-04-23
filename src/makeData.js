@@ -46,20 +46,16 @@ export function hide(group){
      .classed('makeViz', false)
  }
 
-const makeData = (data, clicker, status, distance) => {
+const makeData = (data, clicker, status, distance, businessClicker) => {
 
 let startHeight = 50;
 let barLeft = 20;
 let barHeight = 25;
-
+ 
   let intro = d3.select('#viz').append('text')
   			  .attr('x', () => barLeft)
   			  .attr('y', '0')
   			  .text(`Hi, I am a ${status} Company.`)
-  			  .on('click', () => {
-  			  	console.log('hi what')
-  			  	clicker();
-  			  })
   			  .attr('class', 'intro-barcode')
 
     let cl = []
@@ -92,9 +88,7 @@ let barHeight = 25;
       .on('mouseleave', () =>{
       	hide('.clEnglish')
       })
-  	 .on('click', () => {
-  		 clicker();
-  	   })
+
       
      let clHeader = clGroup.append('text')
       					.attr('x', () => barLeft-10 + "")
@@ -354,11 +348,44 @@ let barHeight = 25;
     						.text(cust2Translate)
     						.attr('class','cust2English')
 
-   let distanceScore = cust2Group.append('text')
-  			                .attr('x', () => barLeft )
-   							.attr('y', () => 30)
-   							.text(`I have a distance score of ${distance}`)
+   let distanceGroup = d3.select('#viz').append('g')
+   								 .on('click', () => {
+   								   clicker();
+   							      })
+
+
+   let distanceScore = distanceGroup.append('text')
+  			                .attr('x', () => barLeft + 150)
+   							.attr('y', () => startHeight + 80)
+   							.text(`I have a distance score of ${distance}.`)
    							.attr('class', 'distance-toggle')
+    let distanceSwitch = distanceGroup.append('text')
+    						.attr('x', () => barLeft + 150)
+    						.attr('y', startHeight + 100)
+    						.attr('class', 'distance-toggle')
+    						.text('click here to change my score.')
+
+    let narrativeGroup = d3.select('#viz').append('g')
+    				.on('click', () => {
+    					businessClicker();
+    				})
+
+    let narrative1 = narrativeGroup.append('text')
+    				.attr('x', () => barLeft + 150)
+    				.attr('y', () => startHeight + 10)
+    				.text(() => `My name is ${data.name},`)
+
+    let narrative2 = narrativeGroup.append('text')
+    				.attr('x', () => barLeft + 150)
+    				.attr('y', () => startHeight + 30)
+    				.text(() => `I'm a ${data.status} company`)
+
+
+    let narrative3 = narrativeGroup.append('text')
+    				.attr('x', () => barLeft + 150)
+    				.attr('y', () => startHeight+50)
+    				.text('click here to change my type')
+
 
 } 
 export default makeData;
