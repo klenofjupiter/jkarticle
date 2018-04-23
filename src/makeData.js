@@ -23,10 +23,16 @@ let dictionary = {
   'B': 'Machines ', 
   'C': 'Information ', 
   'D': 'Money ', 
-  'E': 'Energy ', 
-  '2.2': 'Sells ',
-  '3.1': 'Produces ', 
+  'E': 'Energy ',
+  'F': 'People ',
   '1.2':'Transports ',
+  '1.3': 'Houses ',
+  '2.2': 'Produces ',
+  '3.1': 'Sells ',
+  '3.2': 'Exchanges ', 
+  '3.3': 'Banks ',
+  'Div': 'Various ', 
+
  }
 
 //helper functions for hover-labels

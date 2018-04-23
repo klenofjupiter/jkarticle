@@ -40,7 +40,7 @@ export default class Barcode extends Component {
  }
 
   render() {
-    console.log('clickHAndler', this.props.clickHandler)
+
     return (<svg id="viz" />)
    }
 }
