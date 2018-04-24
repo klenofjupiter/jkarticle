@@ -101,10 +101,20 @@ let barHeight = 25;
         .data(cl)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 10 + "")
+        .attr('x', (d,i) => {
+          if(cl[i][0] === 'dr' || cl[i][0] === 'io'){
+        	 return barLeft + 4
+           }
+        	return barLeft + 10 
+        })
         .attr('y', (d, i) => i*barHeight -5 +barHeight +5 + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => key[cl[i][1]])
+        .text((d, i) => {
+            if((cl[i][0] === 'dr' || cl[i][0] === 'io')&& cl[i][1]){
+            	return "("+key[cl[i][1]]+")"
+            }
+        	return key[cl[i][1]]
+        })
 
       let clLCS = clGroup.selectAll('.clCode')
       			  .data(cl)
@@ -157,10 +167,20 @@ let barHeight = 25;
         .data(f1)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 10 )
+        .attr('x', (d,i) => {
+          if(f1[i][0] === 'dr' || f1[i][0] === 'io'){
+        	 return barLeft + 4
+           }
+        	return barLeft + 10 
+        })
         .attr('y', (d, i) => i*barHeight + (120) + 25 + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => key[f1[i][1]] )
+        .text((d, i) => {
+            if((f1[i][0] === 'dr' || f1[i][0] === 'io')&& f1[i][1]){
+            	return "("+key[f1[i][1]]+")"
+            }
+        	return key[f1[i][1]]
+        })
    
       let f1LCS = f1Group.selectAll('.f1Code')
       			  .data(f1)
@@ -214,11 +234,21 @@ let barHeight = 25;
         .data(f2)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 10 + "")
+        .attr('x', (d,i) => {
+          if(f2[i][0] === 'dr' || f2[i][0] === 'io'){
+        	 return barLeft + 4
+           }
+        	return barLeft + 10 
+        })
         .attr('y', (d, i) => i * barHeight + (240) + barHeight + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => key[f2[i][1]] )
-    let f2Translate = ""
+        .text((d, i) => {
+            if((f2[i][0] === 'dr' || f2[i][0] === 'io')&& f2[i][1]){
+            	return "("+key[f2[i][1]]+")"
+            }
+        	return key[f2[i][1]]
+        })
+
 
      let f2LCS = f2Group.selectAll('.f2Code')
       			  .data(f2)
@@ -266,10 +296,20 @@ let barHeight = 25;
         .data(cust)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 10 + "")
+        .attr('x', (d,i) => {
+          if(cust[i][0] === 'dr' || cust[i][0] === 'io'){
+        	 return barLeft + 4
+           }
+        	return barLeft + 10 
+        })
         .attr('y', (d, i) => i * barHeight + (360) + barHeight + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => key[cust[i][1]] )
+        .text((d, i) => {
+            if((cust[i][0] === 'dr' || cust[i][0] === 'io')&& cust[i][1]){
+            	return "("+key[cust[i][1]]+")"
+            }
+        	return key[cust[i][1]]
+        })
   
      let custLCS = custGroup.selectAll('.custCode')
       			  .data(cust)
@@ -320,10 +360,20 @@ let barHeight = 25;
         .data(cust2)
         .enter()
         .append('svg:text')
-        .attr('x', () => barLeft + 10 +"")
+        .attr('x', (d,i) => {
+          if(cust[i][0] === 'dr' || cust[i][0] === 'io'){
+        	 return barLeft + 4
+           }
+        	return barLeft + 10 
+        })
         .attr('y', (d, i) => i*barHeight + (480) + barHeight + startHeight)
         .attr('stroke', 'black')
-        .text((d, i) => key[cust2[i][1]] )
+        .text((d, i) => {
+            if((cust2[i][0] === 'dr' || cust2[i][0] === 'io')&& cust2[i][1]){
+            	return "("+key[cust2[i][1]]+")"
+            }
+        	return key[cust2[i][1]]
+        })
 
      let cust2LCS = cust2Group.selectAll('.cust2Code')
       			  .data(cust2)
