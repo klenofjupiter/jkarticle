@@ -15,13 +15,21 @@ class App extends Component {
     this.switchClick = this.switchClick.bind(this);
   }
 
-  distanceClicker() {
-
-    if (this.state.barcodeIndex < 5) {
+  distanceClicker(up = true) {
+    if (up){
+     if (this.state.barcodeIndex < 5) {
       let newInd = (++this.state.barcodeIndex)
       this.setState({barcodeIndex : newInd})
-    }else{
-      this.setState({barcodeIndex: 0})
+      }else{
+       this.setState({barcodeIndex: 0})
+     }
+    }else {
+      if(this.state.barcodeIndex > 0){
+        let newInd = (--this.state.barcodeIndex)
+        this.setState({barcodeIndex: newInd})
+      }else{
+        this.setState({barcodeIndex: 5})
+      }
     }
   }
   

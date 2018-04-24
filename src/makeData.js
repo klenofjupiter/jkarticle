@@ -388,9 +388,7 @@ let barHeight = 25;
 
 
    let distanceGroup = d3.select('#viz').append('g')
-   								 .on('click', () => {
-   								   clicker();
-   							      })
+
 
 
    let distanceScore = distanceGroup.append('text')
@@ -412,6 +410,20 @@ let barHeight = 25;
     						  	return 'There are several steps between me and the consumer'
     						  }
     						})
+
+
+    let distanceUp = distanceGroup.append('polygon')
+    							.attr('points', "240,175 260,155 280,175")
+    							.style('fill', '#1da513')
+    							.on('click', () => {
+    								clicker(true);
+    							})
+    let distanceDown = distanceGroup.append('polygon')
+    							.attr('points', "270,155 290,175 310,155")
+    							.style('fill', '#30842a')
+    							.on('click', () => {
+    								clicker(false);
+    							})    
 
     let narrativeGroup = d3.select('#viz').append('g')
     				.on('click', () => {
