@@ -8,17 +8,17 @@ class App extends Component {
     super();
     this.state = {
       barcodeIndex: 0,
+      showB2B: true,
     };
     this.distanceClicker = this.distanceClicker.bind(this);
     this.businessClicker = this.businessClicker.bind(this);
-
+    this.switchClick = this.switchClick.bind(this);
   }
 
   distanceClicker() {
 
     if (this.state.barcodeIndex < 5) {
       let newInd = (++this.state.barcodeIndex)
-      console.log('distancey', newInd)
       this.setState({barcodeIndex : newInd})
     }else{
       this.setState({barcodeIndex: 0})
@@ -26,12 +26,15 @@ class App extends Component {
   }
   
   businessClicker() {
-    // console.log('i had better not fire')
     if(this.state.barcodeIndex !== 0){
       this.setState({barcodeIndex: 0})
     }else{
       this.setState({barcodeIndex: 1})
     }
+  }
+
+  switchClick(bool) {
+    this.setState({showB2B: bool})
   }
 
   render() {
@@ -80,7 +83,7 @@ class App extends Component {
             <p>There are a number of other questions we could explore through this lens. For example, what are the domains in which B2B and B2C companies’ products are used? Or, is there a moderating effect of resource category on the variability in revenue observed in companies closer to consumers? We hope to continue exploring other ways of dissecting this data using our multi-attribute classification system.</p>
           </section>
         </article>
-        <Barcode className="barcode-viz grid-right" data={book[this.state.barcodeIndex]} status={book[this.state.barcodeIndex].status} distance={book[this.state.barcodeIndex].distance} distanceClicker={this.distanceClicker} businessClicker={this.businessClicker}/>
+        <Barcode className="barcode-viz grid-right" data={book[this.state.barcodeIndex]} status={book[this.state.barcodeIndex].status} distance={book[this.state.barcodeIndex].distance} distanceClicker={this.distanceClicker} businessClicker={this.businessClicker} showB2B={this.state.showB2B} switchClick={this.switchClick}/>
         </div>
       </div>
     );

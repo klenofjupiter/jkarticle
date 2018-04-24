@@ -46,7 +46,7 @@ export function hide(group){
      .classed('makeViz', false)
  }
 
-const makeData = (data, clicker, status, distance, businessClicker) => {
+const makeData = (data, clicker, status, distance, businessClicker,showB2B) => {
 
 let startHeight = 50;
 let barLeft = 20;
@@ -365,7 +365,9 @@ let barHeight = 25;
 
     let narrativeGroup = d3.select('#viz').append('g')
     				.on('click', () => {
+    				  if(showB2B){
     					businessClicker();
+    				  }
     				})
     				.attr('class', 'narrative')
 
