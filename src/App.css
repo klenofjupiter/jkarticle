@@ -74,7 +74,7 @@ body {
   color: #464745;
 }
 svg {
-  width: 40vw ;
+  width: 60vw ;
   height: 100vh;
   position: -webkit-sticky;
   position: sticky;
@@ -82,6 +82,7 @@ svg {
   padding-top: 25px;
   padding-right: 0px;
   margin-right: 0px;
+  /*background-color: #ebf2e8;*/
 }
 article {
   padding-left: 10px;
