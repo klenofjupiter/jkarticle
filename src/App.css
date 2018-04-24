@@ -79,10 +79,17 @@ svg {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  padding-top: 25px;
+  padding-top: 50px;
   padding-right: 0px;
   margin-right: 0px;
-  /*background-color: #ebf2e8;*/
+
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+svg:hover, svg:focus {
+  transform: scale(1.05);
 }
 article {
   padding-left: 10px;
@@ -90,3 +97,113 @@ article {
 div {
  overflow: visible;
 }
+h1 {
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+h1:hover, h1:focus {
+  transform: scale(1.05);
+}
+h2 {
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+h2:hover, h2:focus {
+  transform: scale(1.05);
+}
+
+h3 {
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+h3:hover, h3:focus {
+  transform: scale(1.05);
+}
+/*chart one children styles*/
+
+.chart-one-left svg {
+  background-color: rgb(255, 255, 255);
+}
+
+.chart-one-left svg rect:hover {
+  opacity: .7;
+}
+
+.chart-one-left svg g {
+  fill: #ACACAC;
+}
+
+.chart-one-left svg g text.label,
+.chart-one-left svg g text.ylabel {
+  fill: #2A2A2A;
+}
+
+.chart-one-left svg {
+  background-color: #fff;
+}
+
+.chart-one-left #form {
+      position: relative;
+      right: 10px;
+      top: 10px;
+      padding-bottom: 20px;
+}
+
+.chart-one-left  .axis path,
+.chart-one-left  .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.chart-one-left .line {
+  stroke: #FF9900;
+  fill: none;
+  stroke-opacity: 25%;
+  stroke-width: 1px;
+}
+
+.chart-one-left  .unfocused {
+  stroke-opacity: 25%;
+}
+
+ .chart-one-left .focused {
+  stroke-width: 2px;
+  stroke-opacity: 100%;
+}
+
+
+.chart-one-left .bar {
+  fill: steelblue;
+}
+
+.chart-one-left .x.axis path {
+  /*display: none;*/
+}
+
+.chart-one-left .tooltip {
+  position: absolute;
+  z-index: 10;
+}
+
+.chart-one-left .tooltip p {
+  background-color: rgba(255,255,255,1);
+  padding: .5em 1em;
+  font-size: 12px;
+  line-height: 17px;
+  color: black;
+}
+
+.chart-one-left .tooltipHeader {
+  font-weight: 700;
+  font-size: 12.5px;
+} 
+
+
+
