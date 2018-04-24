@@ -413,17 +413,30 @@ let barHeight = 25;
 
 
     let distanceUp = distanceGroup.append('polygon')
-    							.attr('points', "240,175 260,155 280,175")
+    							.attr('points', "190,175 210,155 230,175")
     							.style('fill', '#1da513')
+    							.attr('class', 'distance-toggle')
     							.on('click', () => {
     								clicker(true);
     							})
+    let upLabel = distanceGroup.append('text')
+    							.attr('x', '240')
+    							.attr('y', '170')
+    							.text('raise my distance score')
+    							.attr('class', 'distance-toggle')
+
     let distanceDown = distanceGroup.append('polygon')
-    							.attr('points', "270,155 290,175 310,155")
-    							.style('fill', '#30842a')
+    							.attr('points', "190,180 210,200 230,180")
+    							.style('fill', '#0f5b0a')
+    							.attr('class', 'distance-toggle')
     							.on('click', () => {
     								clicker(false);
     							})    
+    let downLable = distanceGroup.append('text')
+    							.attr('x', '240')
+    							.attr('y', '190')
+    							.text('lower it')
+    							.attr('class', 'distance-toggle')
 
     let narrativeGroup = d3.select('#viz').append('g')
     				.on('click', () => {
