@@ -1,3 +1,4 @@
+/*general styles and barcode viz*/
 .App-header {
   padding: 20px;
   background-color:#d3d8d0;
@@ -69,7 +70,6 @@ body {
   padding-right: 5vw;
   padding-top: 5vh;
   padding-bottom: 5vh;
-/*  background-color: #b3b7b0;*/
  background-color:#eef4eb; 
   color: #464745;
 }
@@ -125,7 +125,9 @@ h3 {
 h3:hover, h3:focus {
   transform: scale(1.05);
 }
-/*chart one children styles*/
+
+
+/*chart one left children styles*/
 
 .chart-one-left svg {
   background-color: rgb(255, 255, 255);
