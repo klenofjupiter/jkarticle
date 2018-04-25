@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import book from './companyBarcodes'
-import Barcode from './Barcode.js'
+import book from './companyBarcodes';
+import Barcode from './Barcode.js';
+import ChartOneLeft from './ChartOneLeft';
 
 class App extends Component {
   constructor(){
@@ -71,7 +72,7 @@ class App extends Component {
             <p>In 2016, B2B companies totaled $6.8 trillion dollars in revenue, while B2C companies totaled $3.6 trillion dollars.</p>
             <p>While there are more B2B public companies in the United States and they account for more of the total revenue, the revenue per company is larger in B2C companies. This is illustrated in the charts above, with the revenue per company in B2C companies being 25% to 50% larger than B2B companies.</p>
             <p>Notice also that while the total revenue of B2C companies increases steadily over the years, the revenue of B2B companies is more volatile, particularly between 2008-2011.</p>
-            <span>chart goes here</span> <span>chart goes here</span>
+            <ChartOneLeft /> <span>chart goes here</span>
           </section>
           <section className="Proximity-to-Consumers">
             <h2 id="distance-score">Proximity to Consumers</h2>
