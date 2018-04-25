@@ -3,7 +3,6 @@
   background-color:#d3d8d0;
 
 }
-
 .App-title {
   font-size: 1.5em;
 }
@@ -19,6 +18,7 @@
 .grid-left {
  grid-column-start: 1;
  margin-left: 20px;
+ padding-right: 20px;
 }
 
 .grid-right {
@@ -73,7 +73,7 @@ body {
  background-color:#eef4eb; 
   color: #464745;
 }
-svg {
+.barcode-svg {
   width: 60vw ;
   height: 100vh;
   position: -webkit-sticky;
@@ -88,7 +88,7 @@ svg {
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-svg:hover, svg:focus {
+.barcode-svg:hover, .barcode-svg:focus {
   transform: scale(1.05);
 }
 article {
