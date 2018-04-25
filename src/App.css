@@ -146,7 +146,9 @@ h3:hover, h3:focus {
 
 .chart-one-left svg {
   background-color: #fff;
-}
+/*  width: 20vw;
+  height: 20vh;
+*/}
 
 .chart-one-left #form {
       position: relative;

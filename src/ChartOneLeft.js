@@ -3,7 +3,6 @@ import * as d3 from 'd3'
 
 export default class ChartOneLeft extends Component {
   componentDidMount() {
-		//d3 rules go here
 var marginStacked = {top: 20, right: 150, bottom: 50, left: 40},
     widthStacked = 600 - marginStacked.left - marginStacked.right,
     heightStacked = 500 - marginStacked.top - marginStacked.bottom;
@@ -46,6 +45,8 @@ var percentClicked = false;
 
 d3.csv("segments_table.csv", function(error, data) {
 
+  data = [{year:'2007', 'old_companies':'1331', 'new_companies': '0'},{year:'2008', 'old_companies':'1301', 'new_companies': '36'},{year:'2009','old_companies':'1311', 'new_companies': '27'},{year:'2010','old_companies':'1308', 'new_companies': '47'}, {year:'2011','old_companies':'1327', 'new_companies': '73'},{year:'2012','old_companies':'1368', 'new_companies': '81'},{year:'2013','old_companies':'1425', 'new_companies': '78'},{year:'2014', 'old_companies':'1480', 'new_companies': '28'},{year:'2015','old_companies':'1446', 'new_companies': '28'},{year:'2016', 'old_companies':'1363', 'new_companies': '7'},]
+   console.log('data!!!', data)
   data.sort(function(a,b) { return +a.total - +b.total;});
 
   var segmentsStacked = ["old_companies",	"new_companies"];
@@ -82,7 +83,7 @@ d3.csv("segments_table.csv", function(error, data) {
 
   var rectangles = year.selectAll("rect")
       .data(function(d) {
-        // console.log("array for a rectangle");
+        console.log("array for a rectangle", d);
         return d; })  // this just gets the array for bar segment.
     .enter().append("rect")
         .attr("width", xScale.rangeBand());
