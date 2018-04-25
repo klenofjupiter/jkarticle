@@ -64,6 +64,12 @@ let barHeight = 25;
     }
 
     let clGroup = d3.select('#viz').append('g')
+      .on('mouseenter', () => {
+        show('.clCode')
+      })
+      .on('mouseleave', () =>{
+        hide('.clCode')
+      })
 
     let companyLocus = clGroup.selectAll('rect .bars')
       .data(cl)
@@ -82,12 +88,7 @@ let barHeight = 25;
         return dictionary[cl[i][1]]
       })
       .attr('class', 'companyLocus')
-      .on('mouseenter', () => {
-      	show('.clCode')
-      })
-      .on('mouseleave', () =>{
-      	hide('.clCode')
-      })
+
 
       
      let clHeader = clGroup.append('text')
@@ -131,7 +132,13 @@ let barHeight = 25;
       f1.push([field, data.f1[field]])
     }
 
-    let f1Group = clGroup.append('g')
+    let f1Group = d3.select('#viz').append('g')
+                        .on('mouseenter', () => {
+                          show('.f1Code')
+                        })
+                        .on('mouseleave', () =>{
+                          hide('.f1Code')
+                        })
 
     let f1Header = f1Group.append('text')
       				.attr('x', () => barLeft + "")
@@ -156,14 +163,9 @@ let barHeight = 25;
         return dictionary[f1[i][1]]
       })
       .attr('class', 'firstInt')
-      .on('mouseenter', () => {
-      	show('.f1Code')
-      })
-      .on('mouseleave', () =>{
-      	hide('.f1Code')
-      })
 
-      let f1Label = clGroup.selectAll('.f1Label')
+
+      let f1Label = f1Group.selectAll('.f1Label')
         .data(f1)
         .enter()
         .append('svg:text')
@@ -198,7 +200,13 @@ let barHeight = 25;
       f2.push([field, data.f2[field]])
     }
 
-    let f2Group = f1Group.append('g')
+    let f2Group = d3.select('#viz').append('g')
+                        .on('mouseenter', () => {
+                          show('.f2Code')
+                        })
+                        .on('mouseleave', () =>{
+                          hide('.f2Code')
+                        })
     
     let f2Header = f2Group.append('text')
       				.attr('x', () => barLeft + "")
@@ -223,12 +231,7 @@ let barHeight = 25;
         return dictionary[f2[i][1]]      
 
       })
-      .on('mouseenter', () => {
-      	show('.f2Code')
-      })
-      .on('mouseleave', () =>{
-      	hide('.f2Code')
-      })
+
 
       let f2Label = f2Group.selectAll('.f2Label')
         .data(f2)
@@ -264,7 +267,13 @@ let barHeight = 25;
     for (let field in data.cust){
       cust.push([field, data.cust[field]])
     }
-    let custGroup = f2Group.append('g')
+    let custGroup = d3.select('#viz').append('g')
+                        .on('mouseenter', () => {
+                          show('.custCode')
+                        })
+                        .on('mouseleave', () =>{
+                          hide('.custCode')
+                        })
     let custHeader = custGroup.append('text')
       				.attr('x', () => barLeft - 1 + "")
       				.attr('y', () => 360 + startHeight)
@@ -286,12 +295,7 @@ let barHeight = 25;
         if (!cust[i][1]) return dictionary['empty']
         return dictionary[cust[i][1]]
       })
-      .on('mouseenter', () => {
-      	show('.custCode')
-      })
-      .on('mouseleave', () =>{
-      	hide('.custCode')
-      })
+
     let custLabel = custGroup.selectAll('.custLabel')
         .data(cust)
         .enter()
@@ -326,7 +330,14 @@ let barHeight = 25;
       cust2.push([field, data.cust2[field]])
     }
 
-    let cust2Group = custGroup.append('g')
+    let cust2Group = d3.select('#viz').append('g')
+                        .on('mouseenter', () => {
+                          show('.cust2Code')
+                        })
+                        .on('mouseleave', () =>{
+                          hide('.cust2Code')
+                        })
+
 
     let cust2Header = cust2Group.append('text')
       				.attr('x', () => barLeft - 20  + "")
@@ -350,12 +361,7 @@ let barHeight = 25;
         if (!cust2[i][1]) return dictionary['empty']
         return dictionary[cust2[i][1]]
       })
-      .on('mouseenter', () => {
-      	show('.cust2Code')
-      })
-      .on('mouseleave', () =>{
-      	hide('.cust2Code')
-      })
+
     let cust2Label = cust2Group.selectAll('.custLabel')
         .data(cust2)
         .enter()
