@@ -34,24 +34,59 @@
   font-size: 1.5em;
 }
 .clCode {
-  display: none;
+  display: block;
+  opacity:0;
+  transition: all .5s
+}
+.clCode.makeViz{
+  opacity: 1;
+  transition: all 2s
 }
 .f1Code {
-  display: none;
+  display: block;
+  opacity: 0;
+  transition: all .5s;
+}
+.f1Code.makeViz{
+  opacity: 1;
+  transition: all 2s
 }
 .f2Code {
-  display: none;
+  display: block;
+  opacity: 0;
+  transition: all .5s;
+}
+.f2Code.makeViz{
+  opacity: 1;
+  transition: all 2s
 }
 .custCode {
-  display: none;
+  display: block;
+  opacity: 0;
+  transition: all .5s;
+}
+.custCode.makeViz{
+  opacity: 1;
+  transition: all 2s
 }
 .cust2Code {
-  display: none;
+  display: block;
+  opacity: 0;
+  transition: all .5s;
+}
+.cust2Code.makeViz{
+  opacity: 1;
+  transition: all 2s
 }
 .distance-toggle {
-  display: none;
-  background-color: red;
+ display: none;
 }
+/*.distance-toggle.makeViz {
+  for animation when made viz
+  opacity: 1;
+  transition: all 2s;
+
+}*/
 .makeViz{
   display: block;
 }
