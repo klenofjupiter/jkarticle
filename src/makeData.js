@@ -32,7 +32,6 @@ let dictionary = {
   '3.2': 'Exchanges', 
   '3.3': 'Banks',
   'Div': 'Various', 
-
  }
 
 //helper functions for hover-labels

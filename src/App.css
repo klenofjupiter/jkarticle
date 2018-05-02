@@ -13,7 +13,7 @@
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 60% 40%;
   grid-column-gap: 50px;
 }
 .grid-left {
@@ -114,7 +114,7 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  padding-top: 50px;
+  padding-top: 150px;
   padding-right: 0px;
   margin-right: 0px;
 

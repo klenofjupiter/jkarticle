@@ -1,38 +1,31 @@
 import * as d3 from 'd3'
 
 const ChartOneLeftData = () => {
+
 	var marginStacked = {top: 20, right: 150, bottom: 50, left: 40},
     widthStacked = 600 - marginStacked.left - marginStacked.right,
     heightStacked = 500 - marginStacked.top - marginStacked.bottom;
 
 
+const xScale = d3.scaleBand().rangeRound([0, widthStacked]).padding(0.3)
 
-var xScale = d3.scale.ordinal()
-    .rangeRoundBands([0, heightStacked], .3);
+var yScale = d3.scaleLinear().rangeRound([heightStacked, 0]);
+console.log('heightstacked', heightStacked)
 
-var yScale = d3.scale.linear()
-    .rangeRound([heightStacked, 0]);
+var color = d3.scaleOrdinal().range(["#ff6600","#ffb380","#003399","#80aff", "#ffcc00", "#ffe680", "#339933", "#9fdf9f"]);
 
+var xAxis = d3.axisBottom(xScale).tickSizeInner([0]);
 
-var color = d3.scale.ordinal().range(["#ff6600","#ffb380","#003399","#80aff", "#ffcc00", "#ffe680", "#339933", "#9fdf9f"]);
+var yAxis = d3.axisLeft(yScale).tickFormat(d3.format(".2s")); // for the stacked totals version
 
-var xAxis = d3.svg.axis()
-    .scale(xScale)
-    .orient("bottom")
-    .innerTickSize([0]);
+// var stack = d3.stack(); // default view is "zero" for the count display.
 
-var yAxis = d3.svg.axis()
-    .scale(yScale)
-    .orient("left")
-    .tickFormat(d3.format(".2s")); // for the stacked totals version
-
-var stack = d3.layout
-    .stack(); // default view is "zero" for the count display.
 
 var svg = d3.select("#chart").append("svg")
     .attr("width", widthStacked + marginStacked.left + marginStacked.right)
     .attr("height", heightStacked + marginStacked.top + marginStacked.bottom)
-  .append("g")
+    .attr('class', 'chart-one-left-svg')
+    .append("g")
     .attr("transform", "translate(" + marginStacked.left + "," + marginStacked.top + ")");
 
 var tooltip = d3.select("body")
@@ -41,15 +34,14 @@ var tooltip = d3.select("body")
 
 var percentClicked = false;
 
-d3.csv("segments_table.csv", function(error, data) {
+  let data = [{year:'2007', 'old_companies':'1331', 'new_companies': '0'},{year:'2008', 'old_companies':'1301', 'new_companies': '36'},{year:'2009','old_companies':'1311', 'new_companies': '27'},{year:'2010','old_companies':'1308', 'new_companies': '47'}, {year:'2011','old_companies':'1327', 'new_companies': '73'},{year:'2012','old_companies':'1368', 'new_companies': '81'},{year:'2013','old_companies':'1425', 'new_companies': '78'},{year:'2014', 'old_companies':'1480', 'new_companies': '28'},{year:'2015','old_companies':'1446', 'new_companies': '28'},{year:'2016', 'old_companies':'1363', 'new_companies': '7'},]
 
-  data = [{year:'2007', 'old_companies':'1331', 'new_companies': '0'},{year:'2008', 'old_companies':'1301', 'new_companies': '36'},{year:'2009','old_companies':'1311', 'new_companies': '27'},{year:'2010','old_companies':'1308', 'new_companies': '47'}, {year:'2011','old_companies':'1327', 'new_companies': '73'},{year:'2012','old_companies':'1368', 'new_companies': '81'},{year:'2013','old_companies':'1425', 'new_companies': '78'},{year:'2014', 'old_companies':'1480', 'new_companies': '28'},{year:'2015','old_companies':'1446', 'new_companies': '28'},{year:'2016', 'old_companies':'1363', 'new_companies': '7'},]
-   console.log('data!!!', data)
   data.sort(function(a,b) { return +a.total - +b.total;});
 
   var segmentsStacked = ["old_companies",	"new_companies"];
 
-  var stacked = stack(makeData(segmentsStacked, data));
+  let firstStack = d3.stack().keys(segmentsStacked)
+  let stacked = firstStack(data)
 
   xScale.domain(data.map(function(d) { return d.year; }));
 
@@ -73,18 +65,19 @@ d3.csv("segments_table.csv", function(error, data) {
       .text("segmentsStacked");
 
   var year = svg.selectAll(".year")
-      .data(stacked)
-    .enter().append("g")
+      .data(segmentsStacked)
+      .enter().append("g")
       .attr("class", "year")
       .style("fill", function(d, i) { return color(i); });
 
 
   var rectangles = year.selectAll("rect")
-      .data(function(d) {
-        console.log("array for a rectangle", d);
+       .data(function(d) {
         return d; })  // this just gets the array for bar segment.
-    .enter().append("rect")
-        .attr("width", xScale.rangeBand());
+       .enter()
+       .append("rect")
+       .attr('class', 'test-rects')
+       .attr("width", xScale.bandwidth());
 
     // this just draws them in the default way, now they're appended.
   transitionCount();
@@ -107,18 +100,19 @@ d3.csv("segments_table.csv", function(error, data) {
 
 
   function makeData(segmentsStacked, data) {
-    return segmentsStacked.map(function(component) {
+    let output = segmentsStacked.map(function(component) {
         return data.map(function(d) {
           return {x: d["year"], y: +d[component], component: component};
         })
       });
+    return output
   }
 
 
   function transitionPercent() {
 
     yAxis.tickFormat(d3.format("%"));
-    stack.offset("expand");  // use this to get it to be relative/normalized!
+   let stack =  d3.stack().offset("expand");  // use this to get it to be relative/normalized!
     var stacked = stack(makeData(segmentsStacked, data));
     // call function to do the bars, which is same across both formats.
     transitionRects(stacked);
@@ -126,10 +120,10 @@ d3.csv("segments_table.csv", function(error, data) {
 
   function transitionCount() {
 
-    yAxis.tickFormat(d3.format(".2s")); // for the stacked totals version
-    stack.offset("zero");
-    var stacked = stack(makeData(segmentsStacked, data));
-    transitionRects(stacked);
+     yAxis.tickFormat(d3.format(".2s")); // for the stacked totals version
+     let newStack = d3.stack().keys(segmentsStacked).order(d3.stackOrderNone).offset(d3.stackOffsetNone)
+     let stacked = newStack(data)
+     transitionRects(stacked);
 
     }
 
@@ -145,19 +139,38 @@ d3.csv("segments_table.csv", function(error, data) {
     // same on the rects
     year.selectAll("rect")
       .data(function(d) {
-        console.log("array for a rectangle");
         return d;
       })  // this just gets the array for bar segment.
+   //THIS IS WHERE THE CURRENT PROBLEM IS -- undefined y and height attr's
 
+   
     svg.selectAll("g.year rect")
       .transition()
       .duration(250)
       .attr("x", function(d) {
-        return xScale(d.x); })
+        // return xScale(d.x); 
+        // console.log('dataa', d)
+       if (d.data) return xScale(d.data.year)
+        return null
+        // return xScale(d.data.year)
+      })
       .attr("y", function(d) {
-        return yScale(d.y0 + d.y); }) //
+        // console.log('dy',  d)
+        // if (typeof d[0] === "number" && typeof d[1] === "number"){
+          // let val = yScale(d[1])
+          // return d[0] + d[1];
+        // }
+           console.log('last try',d.data)
+        // return yScale(d.y0 + d.y); 
+        if (d.data) return yScale(d.data.new_companies + d.data.old_companies)
+          return null
+      }) 
       .attr("height", function(d) {
-        return yScale(d.y0) - yScale(d.y0 + d.y); });  // height is base - tallness
+        // return yScale(d.y0) - yScale(d.y0 + d.y); 
+
+         if (d.data) return yScale(d.data.new_companies - yScale(d.data.new_companies + d.data.old_companies))
+          return null
+        });  // height is base - tallness
 
     svg.selectAll(".y.axis").transition().call(yAxis);
   }
@@ -226,7 +239,7 @@ d3.csv("segments_table.csv", function(error, data) {
     function mouseoutFunc(d) {
         return tooltip.style("display", "none"); // this sets it to invisible!
     }
-});
+
 }
 
 export default ChartOneLeftData;
