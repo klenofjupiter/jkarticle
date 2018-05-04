@@ -1,16 +1,21 @@
 import * as d3 from 'd3'
 
 const ChartOneLeftData = () => {
+  let data = [{year:'2007', 'old_companies':'1331', 'new_companies': '0'},{year:'2008', 'old_companies':'1301', 'new_companies': '36'},{year:'2009','old_companies':'1311', 'new_companies': '27'},{year:'2010','old_companies':'1308', 'new_companies': '47'}, {year:'2011','old_companies':'1327', 'new_companies': '73'},{year:'2012','old_companies':'1368', 'new_companies': '81'},{year:'2013','old_companies':'1425', 'new_companies': '78'},{year:'2014', 'old_companies':'1480', 'new_companies': '28'},{year:'2015','old_companies':'1446', 'new_companies': '28'},{year:'2016', 'old_companies':'1363', 'new_companies': '7'},]
+
+  data.sort(function(a,b) { return +a.total - +b.total;});
 
 	var marginStacked = {top: 20, right: 150, bottom: 50, left: 40},
     widthStacked = 600 - marginStacked.left - marginStacked.right,
     heightStacked = 500 - marginStacked.top - marginStacked.bottom;
 
 
-const xScale = d3.scaleBand().rangeRound([0, widthStacked]).padding(0.3)
+let demesne = data.map((d) => d.year)
+const xScale = d3.scaleBand().domain(demesne).rangeRound([0, widthStacked]).paddingInner(0.3)
+  
+  // yScale.domain([0, d3.max(stacked[stacked.length-1], function(d) { return d.y0 + d.y; })]);
 
-var yScale = d3.scaleLinear().rangeRound([heightStacked, 0]);
-console.log('heightstacked', heightStacked)
+var yScale = d3.scaleLinear().rangeRound([heightStacked, 0]).domain([0, 1600]);
 
 var color = d3.scaleOrdinal().range(["#ff6600","#ffb380","#003399","#80aff", "#ffcc00", "#ffe680", "#339933", "#9fdf9f"]);
 
@@ -34,16 +39,14 @@ var tooltip = d3.select("body")
 
 var percentClicked = false;
 
-  let data = [{year:'2007', 'old_companies':'1331', 'new_companies': '0'},{year:'2008', 'old_companies':'1301', 'new_companies': '36'},{year:'2009','old_companies':'1311', 'new_companies': '27'},{year:'2010','old_companies':'1308', 'new_companies': '47'}, {year:'2011','old_companies':'1327', 'new_companies': '73'},{year:'2012','old_companies':'1368', 'new_companies': '81'},{year:'2013','old_companies':'1425', 'new_companies': '78'},{year:'2014', 'old_companies':'1480', 'new_companies': '28'},{year:'2015','old_companies':'1446', 'new_companies': '28'},{year:'2016', 'old_companies':'1363', 'new_companies': '7'},]
 
-  data.sort(function(a,b) { return +a.total - +b.total;});
 
   var segmentsStacked = ["old_companies",	"new_companies"];
 
   let firstStack = d3.stack().keys(segmentsStacked)
   let stacked = firstStack(data)
 
-  xScale.domain(data.map(function(d) { return d.year; }));
+  // xScale.domain(data.map(function(d) { return d.year; }));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -130,7 +133,8 @@ var percentClicked = false;
   function transitionRects(stacked) {
 
     // this domain is using the last of the stacked arrays, which is the last illness, and getting the max height.
-    yScale.domain([0, d3.max(stacked[stacked.length-1], function(d) { return d.y0 + d.y; })]);
+    // yScale.domain([0, d3.max(stacked[stacked.length-1], function(d) { return d.y0 + d.y; })]);
+    // console.log('yscallle', yScale(3))
 
     // attach new fixed data
     var year = svg.selectAll(".year")
@@ -139,6 +143,7 @@ var percentClicked = false;
     // same on the rects
     year.selectAll("rect")
       .data(function(d) {
+        console.log('ddddd', d)
         return d;
       })  // this just gets the array for bar segment.
    //THIS IS WHERE THE CURRENT PROBLEM IS -- undefined y and height attr's
@@ -147,12 +152,9 @@ var percentClicked = false;
     svg.selectAll("g.year rect")
       .transition()
       .duration(250)
-      .attr("x", function(d) {
-        // return xScale(d.x); 
-        // console.log('dataa', d)
-       if (d.data) return xScale(d.data.year)
-        return null
-        // return xScale(d.data.year)
+      .attr("x", function(d, i) {
+        console.log('desmesne', demesne[i])
+        return xScale(demesne[i])
       })
       .attr("y", function(d) {
         // console.log('dy',  d)
@@ -160,16 +162,22 @@ var percentClicked = false;
           // let val = yScale(d[1])
           // return d[0] + d[1];
         // }
-           console.log('last try',d.data)
         // return yScale(d.y0 + d.y); 
-        if (d.data) return yScale(d.data.new_companies + d.data.old_companies)
-          return null
+        // if (d.data) return yScale(d.data.new_companies + d.data.old_companies)
+        //   return null
+         if (typeof d[0] === 'number') return yScale(d[0] + d[1])
+          return 0
       }) 
       .attr("height", function(d) {
         // return yScale(d.y0) - yScale(d.y0 + d.y); 
 
-         if (d.data) return yScale(d.data.new_companies - yScale(d.data.new_companies + d.data.old_companies))
-          return null
+         // if (d.data) return yScale(d.data.new_companies - yScale(d.data.new_companies + d.data.old_companies))
+         //  return null
+         // let height = d[0] - yScale(d[1])
+         // yScale(d.y0) - yScale(d.y0 + d.y);
+         if (typeof d[0] === 'number')return yScale(d[0]) - yScale(d[0] + d[1])
+          return 0 
+         // return yScale(d[0]) - yScale(d[1])
         });  // height is base - tallness
 
     svg.selectAll(".y.axis").transition().call(yAxis);
@@ -212,17 +220,12 @@ var percentClicked = false;
 
 
     function mouseoverFunc(d) {
-
-
-      console.log("moused over", d.x);
         if(percentClicked) {
           tooltip
             .style("display", null)
             .html("<p><span class='tooltipHeader'>" + d3.format("%")(d.y) + "</p>");
             // .html("<p><span class='tooltipHeader'>" + d.x + "</span><br>"+ d.component + ": " + d3.format("%")(d.y) + "</p>");
         } else {
-              console.log("segmentsStacked", d.component, "percent", d.y);
-
               tooltip
                 .style("display", null)
                 .html("<p><span class='tooltipHeader'>" +d.y + "</p>");
