@@ -154,7 +154,11 @@ var percentClicked = false;
       .duration(250)
       .attr("x", function(d, i) {
         console.log('desmesne', demesne[i])
-        return xScale(demesne[i])
+        if (i < demesne.length){
+          return xScale(demesne[i])
+        }else{
+          return xScale(demesne[i - demesne.length])
+        }
       })
       .attr("y", function(d) {
         // console.log('dy',  d)
