@@ -164,9 +164,10 @@ h3:hover, h3:focus {
 
 /*chart one left children styles*/
 
-.chart-one-left svg {
+/*.chart-one-left svg {
   background-color: rgb(255, 255, 255);
-}
+}*/
+
 
 .chart-one-left svg rect:hover {
   opacity: .7;
@@ -182,10 +183,13 @@ h3:hover, h3:focus {
 }
 
 .chart-one-left svg {
-  background-color: #fff;
+  /*background-color: #fff;*/
 /*  width: 20vw;
   height: 20vh;
-*/}
+
+*/
+background-color: #eef4eb;
+}
 
 .chart-one-left #form {
       position: relative;
@@ -243,6 +247,30 @@ h3:hover, h3:focus {
   font-weight: 700;
   font-size: 12.5px;
 } 
-
+/* chart two children styles*/
+/*.#chart-two .svg{
+  margin-top: 200px;
+}
+*/#chart-two .bar {
+  fill: steelblue;
+}
+#chart-two .bar:hover {
+  fill: brown;
+}
+#chart-two .label {
+  fill: black;
+  font: 10px sans-serif;
+  text-anchor: middle;
+ }
+#chart-two .toolTip {
+  position: absolute;
+  display: none;
+  min-width: 80px;
+  height: auto;
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #6F257F;
+  padding: 14px;
+  text-align: center;
+}
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import * as d3 from 'd3'
-import chartOneLeftData from './chartOneLeftData'
+import * as d3 from 'd3';
+import chartOneLeftData from './chartOneLeftData';
 
 export default class ChartOneLeft extends Component {
   componentDidMount() {
