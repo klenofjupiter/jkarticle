@@ -19,11 +19,11 @@ export default class ChartOneLeft extends Component {
   render() {
   	return (
       <div className="chart-one-left">
-        <h2>Segments</h2>
+{  /*      <h2>Segments</h2>
       <div id="form">
         <label><input type="radio" name="mode" value="bycount" checked />Raw Count</label>
         <label><input type="radio" name="mode" value="bypercent" />Percent of Segments</label>
-      </div>
+      </div> */}
         <div id="chart" />
       </div>
   		)

@@ -44,8 +44,6 @@ const ChartTwoData = function() {
            obj.n_companies = Number(temp[1])
            data.push(obj)
      	}
-      
-      console.log('data', data)
 
       x.domain(data.map(function(d) { return d.sales_amount; }))
       	.paddingInner(0.1)
@@ -76,7 +74,6 @@ const ChartTwoData = function() {
           .attr("width", x.bandwidth())
           .attr("y", function(d) { return y(d.n_companies); })
           .attr("height", function(d) { 
-             console.log('height', height - y(d.n_companies))
           	return height - y(d.n_companies); })
         .on("mousemove", function(d){
             tooltip
