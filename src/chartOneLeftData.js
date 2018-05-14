@@ -66,7 +66,9 @@ const ChartOneLeftData = () => {
                 .data(segmentsStacked).enter()
                 .append('g')
                 .attr('class', 'year')
-                .style('fill', (d,i) => color(i))
+                .style('fill', (d,i) => {
+                  // return color(i)
+                })
 
   const rectangles = year.selectAll('rect')
         .data((d) => d)
@@ -102,6 +104,13 @@ const ChartOneLeftData = () => {
     })
     .attr('height', (d, i) => {
       if (hackData[i]) return yScale(hackData[i].y0) - yScale(hackData[i].y0 + hackData[i].y)
+    })
+    .style('fill', (d, i) => {
+      if (i < 10){
+        return '#ff6600'
+      }else if(i < 20) {
+        return "#ffb380"
+      }
     })
 
 //legends
