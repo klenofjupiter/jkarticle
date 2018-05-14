@@ -42,9 +42,6 @@ const ChartOneLeftData = () => {
     .attr('class', 'chart-one-left-svg')
     .append("g")
     .attr("transform", "translate(" + marginStacked.left + "," + marginStacked.top + ")");
-  const tooltip = d3.select("body")
-          .append("div")
-          .attr("class", "tooltip");
 
   let percentClicked = false;
 
@@ -69,25 +66,23 @@ const ChartOneLeftData = () => {
                 .data(segmentsStacked).enter()
                 .append('g')
                 .attr('class', 'year')
-                .style('fill', (d,i) => color(i))
+                .style('fill', (d,i) => {
+                  // return color(i)
+                })
 
   const rectangles = year.selectAll('rect')
         .data((d) => d)
         .enter()
         .append('rect')
         .attr('class', 'test-rects')
-        .attr('width', xScale.bandwidth());
-      rectangles
-        .on("mouseover", mouseoverFunc)
-        .on("mousemove", mousemoveFunc)
-        .on("mouseout", mouseoutFunc);
+        .attr('width', xScale.bandwidth()-2);
+
 
   yAxis.tickFormat(d3.format('.2s'))
   const newStack = d3.stack().keys(segmentsStacked).order(d3.stackOrderNone).offset(d3.stackOffsetNone)
   const stacked = newStack(data)
   const otherYear = svg.selectAll('.year')
                         .data(stacked)
-                        // .enter()
   otherYear.selectAll('rect')
    .data(function(d){return d})
 
@@ -98,20 +93,25 @@ const ChartOneLeftData = () => {
     .duration(250)
     .attr('x', function(d,i){
       if (i < yearArr.length){
-        return xScale(yearArr[i])
+        return xScale(yearArr[i]) + 3
       }else{
-        return xScale(yearArr[i - yearArr.length])
+        return xScale(yearArr[i - yearArr.length]) + 3
       }
     })
     .attr('y', (d, i) => {
-
        if(hackData[i]) return yScale(hackData[i].y0 + hackData[i].y)
 
     })
     .attr('height', (d, i) => {
       if (hackData[i]) return yScale(hackData[i].y0) - yScale(hackData[i].y0 + hackData[i].y)
     })
-
+    .style('fill', (d, i) => {
+      if (i < 10){
+        return '#ff6600'
+      }else if(i < 20) {
+        return "#ffb380"
+      }
+    })
 
 //legends
 
@@ -124,43 +124,17 @@ const ChartOneLeftData = () => {
         // Added the absolute value and transition. I reversed the names, so that I can continue to use category20(), but have health as green to make it stand out.
 
     legend.append("rect")
-        .attr("x", widthStacked)
+        .attr("x", widthStacked + 7)
         .attr("width", 18)
         .attr("height", 18)
         .style("fill", color);
 
     legend.append("text")
-        .attr("x", widthStacked + 24)
+        .attr("x", widthStacked + 30)
         .attr("y", 9)
         .attr("dy", ".35em")
         .style("text-anchor", "start")
         .text(function(d, i) { return labels[i]; });
-
-    function mouseoverFunc(d) {
-        if(percentClicked) {
-          tooltip
-            .style("display", null)
-            .html("<p><span class='tooltipHeader'>" + d3.format("%")(d.y) + "</p>");
-            // .html("<p><span class='tooltipHeader'>" + d.x + "</span><br>"+ d.component + ": " + d3.format("%")(d.y) + "</p>");
-        } else {
-              tooltip
-                .style("display", null)
-                .html("<p><span class='tooltipHeader'>" +d.y + "</p>");
-                // .html("<p><span class='tooltipHeader'>" + d.x + "</span><br>"+ d.component + ": " +d.y + "</p>");
-        }
-    }
-
-    function mousemoveFunc(d) {
-        tooltip
-            .style("top", (d3.event.pageY - 5) + "px")
-            .style("left", (d3.event.pageX + 10) + "px");
-    }
-
-    function mouseoutFunc(d) {
-        return tooltip.style("display", "none"); // this sets it to invisible!
-    }
-
-
 
 }
 
