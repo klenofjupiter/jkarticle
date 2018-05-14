@@ -9,7 +9,7 @@ export default class Barcode extends Component {
 
       let score = document.getElementById('distance-score');
       let rect = score.getBoundingClientRect();
-      if(/*rect.top > 0 && */ rect.top < window.innerHeight){
+      if(rect && /*rect.top > 0 && */ rect.top < window.innerHeight){
         show('.distance-toggle')
         if(this.props.showB2B){
           this.props.switchClick(false);
