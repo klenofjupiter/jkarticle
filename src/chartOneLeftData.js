@@ -117,11 +117,10 @@ const ChartOneLeftData = () => {
 
     const labels = ["Businesses", "New Businesses"];
     const legend = svg.selectAll(".legend")
-        .data(color.domain().slice()) // what do you think this does?
+        .data(color.domain().slice())
       .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i) { return "translate(0," + Math.abs((i-8) * 20) + ")"; });
-        // Added the absolute value and transition. I reversed the names, so that I can continue to use category20(), but have health as green to make it stand out.
 
     legend.append("rect")
         .attr("x", widthStacked + 7)
