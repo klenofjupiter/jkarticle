@@ -4,6 +4,7 @@ import book from './companyBarcodes';
 import Barcode from './Barcode.js';
 import ChartOneLeft from './ChartOneLeft';
 import ChartTwo from './ChartTwo';
+import PageSixChart from './PageSixChart';
 
 class App extends Component {
   constructor(){
@@ -11,6 +12,7 @@ class App extends Component {
     this.state = {
       barcodeIndex: 0,
       showB2B: true,
+      inDev: true, 
     };
     this.distanceClicker = this.distanceClicker.bind(this);
     this.businessClicker = this.businessClicker.bind(this);
@@ -49,6 +51,8 @@ class App extends Component {
 
   render() {
     // console.log('company name', book[this.state.barcodeIndex].name, book[this.state.barcodeIndex].status)
+     if(this.state.inDev) return <PageSixChart />
+
     return (
       <div className="App">
         <header className="App-header">
