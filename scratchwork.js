@@ -1,382 +1,83 @@
-        // let pucl = []
-    // for (let field in data.pucl){
-    //   pucl.push([field, data.pucl[field]])
-    // }
-    // let puclGroup = f2Group.append('g')
+// 
+     // const percentB2B = (totalb2b / totalCompanies) * 10
+    // const percentB2C = (totalb2c / totalCompanies) * 10
 
-    // let puclBars = puclGroup.selectAll('rect .bars')
-    //   .data(pucl)
-    //   .enter()
-    //   .append('svg:rect')
-    //   .attr('x','80')
-    //   .attr('y', (d, i) => {
-    //      let height = i*25 + 360
-    //      return height
-    //   })
-    //   .attr('height', '25')
-    //   .attr('width', '100')
-    //   .style('stroke', 'none')
-    //   .style('fill', (d, i) => {
-    //     if (!pucl[i][1]){
-    //       return '#565655'
-    //     }
-    //     if(pucl[i][1] === '2.2'){
-    //       return '#FCC528'
-    //     }
-    //     if(pucl[i][1] === 'B') {
-    //       return "#64B5F6"
-    //     }
-    //     if(pucl[i][1] === 'A') {
-    //       return "#9575CD"
-    //     }
-    //     if(pucl[i][1] === '3.1') {
-    //       return "#8BBA25"
-    //     }        
+    // const percentScale = d3.scaleLinear().range([0, 3000]).domain([0, 100])
+// b2b graph
+//     const arc = d3.arc()
+//                   .outerRadius(percentScale(percentB2B)) 
+//                   .innerRadius(0)
 
-    //   })
-    // let puclLabel = puclGroup.selectAll('.puclLabel')
-    //     .data(pucl)
-    //     .enter()
-    //     .append('svg:text')
-    //     .attr('x', '120')
-    //     .attr('y', (d, i) => i*25 + (240-5) + 25)
-    //     .attr('stroke', 'black')
-    //     .text((d, i) => pucl[i][1] )
+//     const labelArc = d3.arc()
+//                        .outerRadius(percentScale(percentB2B) - 60)
+//                        .innerRadius(percentScale(percentB2B)- 50)
 
-    // let pufl = []
-    // for (let field in data.pufl){
-    //   pufl.push([field, data.pufl[field]])
-    // }
-    // let puflGroup = puclGroup.append('g')
-    // let puflBars = puflGroup.selectAll('rect .bars')
-    //   .data(pufl)
-    //   .enter()
-    //   .append('svg:rect')
-    //   .attr('x','80')
-    //   .attr('y', (d, i) => {
-    //      let height = i*25 + 360
-    //      return height
-    //   })
-    //   .attr('height', '25')
-    //   .attr('width', '100')
-    //   .style('stroke', 'none')
-    //   .style('fill', (d, i) => {
-    //     if (!pufl[i][1]){
-    //       return '#565655'
-    //     }
-    //     if(pufl[i][1] === '2.2'){
-    //       return '#FCC528'
-    //     }
-    //     if(pufl[i][1] === 'B') {
-    //       return "#64B5F6"
-    //     }
-    //     if(pufl[i][1] === 'A') {
-    //       return "#9575CD"
-    //     }
-    //     if(pufl[i][1] === '3.1') {
-    //       return "#8BBA25"
-    //     }
-    //     if(pufl[i][1] === '1.2') {
-    //       return "#D8223F"
-    //     }
-    //   })
-    // let puflLabel = puflGroup.selectAll('.puflLabel')
-    //     .data(pufl)
-    //     .enter()
-    //     .append('svg:text')
-    //     .attr('x', '120')
-    //     .attr('y', (d, i) => i*25 + (360-5) + 25)
-    //     .attr('stroke', 'black')
-    //     .text((d, i) => pufl[i][1] )
+//     const pie = d3.pie().value((d) => d[4])
+   
+//    //append g elements for arcs
+//     const g = plot.selectAll('.arc-1')
+//                   .data(pie(b2b))
+//                   .enter()
+//                   .append('g')
+//                   .attr('class', 'arc-1')
+//                   .attr('transform', 'translate(400, 400)')
 
-    // let dom = []
-    // for (let field in data.dom){
-    //   dom.push([field, data.dom[field]])
-    // }
-    // let domGroup = puflGroup.append('g')
+//     //append path of arc
+//     g.append('path')
+//      .attr('d', arc)
+//      .style('fill', (d, i) => reds(i))
 
-    // let domBars = domGroup.selectAll('rect .bars')
-    //   .data(dom)
-    //   .enter()
-    //   .append('svg:rect')
-    //   .attr('x','80')
-    //   .attr('y', (d, i) => {
-    //      let height = i*25 + 460
-    //      return height
-    //   })
-    //   .attr('height', '25')
-    //   .attr('width', '100')
-    //   .style('stroke', 'none')
-    //   .style('fill', (d, i) => {
-    //     if (!dom[i][1]){
-    //       return '#565655'
-    //     }
-    //     if(dom[i][1] === '2.2'){
-    //       return '#FCC528'
-    //     }
-    //     if(dom[i][1] === 'B') {
-    //       return "#64B5F6"
-    //     }
-    //     if(dom[i][1] === 'A') {
-    //       return "#9575CD"
-    //     }
-    //     if(dom[i][1] === '3.1') {
-    //       return "#8BBA25"
-    //     }
-    //     if(dom[i][1] === '1.2') {
-    //       return "#D8223F"
-    //     }
-    //   })
-    // let domLabel = domGroup.selectAll('.domLabel')
-    //     .data(dom)
-    //     .enter()
-    //     .append('svg:text')
-    //     .attr('x', '120')
-    //     .attr('y', (d, i) => i*25 + (460-5) + 25)
-    //     .attr('stroke', 'black')
-    //     .text((d, i) => dom[i][1] )
+//     //append label
+//     g.append('text')
+//      .attr('transform', (d) => 'translate(' + labelArc.centroid(d) + ")" )
+//      .attr('dy', '.35em')
+//      .text((d) => { return d.data[2]})
+//      .attr('fill', 'white')
 
+//      // chart label
 
-    // let cpul = []
-    // for (let field in data.cpul){
-    //   cpul.push([field, data.cpul[field]])
-    // }
-    // let cpulGroup = custGroup.append('g')
+//      g.append('text')
+//       .text((d) => "Businesses in "+ d.data[0])
+//       .style('fill', 'gray')
+//       .style('font-size', '1.25em')
+//       .style('font-weight', 'lighter')
+//       .attr('transform', 'translate(-90, 250)')
+//       // .on('click', () => {
+//       //   let newYear;
+//       //   if (year == '2016'){
+//       //     newYear = '2007'
+//       //   }else{
+//       //     newYear =( Number(year) + 1)+ ""
+//       //   }
+//       //   d3.selectAll('#page-six-chart > *').remove()
+//       //     this.drawData(savedData, newYear)
+//       // })
 
-    // let cpulBars = cpulGroup.selectAll('rect .bars')
-    //   .data(cpul)
-    //   .enter()
-    //   .append('svg:rect')
-    //   .attr('x','80')
-    //   .attr('y', (d, i) => {
-    //      let height = i*25 + 700
-    //      return height
-    //   })
-    //   .attr('height', '25')
-    //   .attr('width', '100')
-    //   .style('stroke', 'red')
-    //   .style('stroke-width', '3')
-    //   .style('fill', (d, i) => {
-    //     if (!cpul[i][1]){
-    //       return '#565655'
-    //     }
-    //     if(cpul[i][1] === '2.2'){
-    //       return '#FCC528'
-    //     }
-    //     if(cpul[i][1] === 'B') {
-    //       return "#64B5F6"
-    //     }
-    //     if(cpul[i][1] === 'A') {
-    //       return "#9575CD"
-    //     }
-    //     if(cpul[i][1] === '3.1') {
-    //       return "#8BBA25"
-    //     }
-    //     if(cpul[i][1] === '1.2') {
-    //       return "#D8223F"
-    //     }
-    //     if(cpul[i][1] === 'E') {
-    //       return '#FFB74D'
-    //     }
-    //   })
-    //   .on('click', () => { clicker(); })
-    // let cpulLabel = cpulGroup.selectAll('.cpulLabel')
-    //     .data(cpul)
-    //     .enter()
-    //     .append('svg:text')
-    //     .attr('x', '120')
-    //     .attr('y', (d, i) => i*25 + (700-5) + 25)
-    //     .attr('stroke', 'black')
-    //     .text((d, i) => cpul[i][1] )
+//   //b2c graph 
+//     const secondPie = d3.pie().value((d) => { return d[4]})(b2c)
 
+//      const blueArc = d3.arc()
+//                    .outerRadius(percentScale(percentB2C))
+//                    .innerRadius(0)
 
-      let companyLoci = d3.select('#viz').selectAll('rect .bars companyLoci')
-   .data(data[0])
-   .enter()
-   .append('svg:rect')
-   .attr('x', '80')
-   .attr('y', (d,i) => i*25)
-   .attr('height', '25')
-   .attr('width', '100')
-   .style('stroke', 'black')
-   .style('fill', 'none')
-   .style('stroke-width', '1')
+//      const labelArc2 = d3.arc() 
+//                   .outerRadius(percentScale(percentB2C) - 15)
+//                   .innerRadius(percentScale(percentB2C) - 20)
 
-   // let clLabels = d3.selectAll('rect .bars companyLoci')
-   // .append('text')
-   // .attr('x', '120')
-   // .attr('y', (d, i) => i*25-5)
-   // .attr('class', 'clLabels')
-   // .attr('stroke', 'black')
-   // .text((d) => d.name)
+//      const g2 = plot.selectAll('.arc-2')
+//                    // .data(secondPie(b2c))
+//                    .enter()
+//                    .append('g')
+//                    .attr('class', 'arc-2')
+//                    .attr('transform', 'translate(800, 700)')
+//           g.append('path')
+//             .attr('d', blueArc)
+//             .style('fill', (d, i) => blues(i))
 
-
-
-      barcode:{ "CofC Terminal Case 2": "", 
-               "CofC Terminal Case 1": "", 
-               "2012_NAICS": "112519", 
-               "Customer Product": "RP", 
-               "Dictionary Position Description": "These companies catch and sell freshwater fish and seafood. They sell through food retailers.",
-               "CofC Final Resource 2": "",
-                "Enterprise Locus": "2.2.2 E3i", 
-                "Customer Locus": "1.3.2 F", 
-                "CofC Department Locus": "", 
-                "Final Resource 1": "E4i 2.2.2 F", 
-                "Final Resource 2": "", 
-                "Customer of Customer Locus": "", 
-                "Co-Customer Temporal": "", 
-                "Customer Type": "Consumers",
-                 "Relationship Type": "", 
-                 "Department Locus": "DivA DivA",
-                "Co-Customer Product": "",
-                "Co-Customer Type": "", 
-                "Intermediary 2 Type": "",
-                "Co-Customer Locus": "", 
-                "CofC Constituent Resource 2": "", 
-                "CofC Product": "", 
-                "Dictionary Position Title": "Fish and Seafood", 
-                "Work Group 2": "", 
-                "AD": "818.5", 
-                "Intermediary 1 Locus": "(A4ii) 3.1.2 EDivA", 
-                "Work Group 1": "DivA DivA", 
-                "Constituent Resource 1": "E3i 1.3.2 E4DivA", 
-                "Constituent Resource 2": "", 
-                "CofC Type": "", 
-                "Terminal Case 2": "", 
-                "Terminal Case 1": "DivM", 
-                "Customer Relationship": "", 
-                "Customer Temporal": "First", 
-                "CofC Constituent Resource 1": "", 
-                "Enterprise Product": "RP", 
-                "Process": "In-house", 
-                "Intermediary 2 Locus": "", 
-                "CofC Work Group 1": "", 
-                "CofC Final Resource 1": "", 
-                "2012_Title": "Other Aquaculture", 
-                "CofC Work Group 2": "", 
-                "Intermediary 1 Type": "With Inventory", 
-                "Product Line": "Main"}
-
-                      // flatBarcode: {
-      //   cldr: "", 
-      //   clvb:"2.2", 
-      //   clobj:"B", 
-      //   clio: "", 
-      //   int1dr: "", 
-      //   int1verb: "2.2", 
-      //   int1obj: "B", 
-      //   int1io: "", 
-      //   int2dr: "A", 
-      //   int2verb: "3.1", 
-      //   int2obj: "B", 
-      //   int2io:"", 
-      //   pusub:"B", 
-      //   puverb:"1.2", 
-      //   puobj:"B", 
-      //   domdr:"B", 
-      //   domverb:"1.2",
-      //   domobj:"B", 
-      //   domio:"", 
-      //   custdr:"B", 
-      //   custverb:"1.2", 
-      //   custobj:"B", 
-      //   cpurlsubj:"B", 
-      //   cpurlverb:"2.2", 
-      //   cpurlobj: "E", 
-      //   cpuwlverb:"2.2", 
-      //   cpuwlobj:"E",
-      //   cust2verb:"2.2", 
-      //   cust2obj:"E",
-      // }
-
-
-         // let currentY = 25;
-   // data.forEach((datum, index) => {
-   //  let outline = d3.select('#viz').selectAll(`rect. bars ${datum.name}`)
-   //    .data(datum)
-   //    .enter()
-   //    .append('svg:rect')
-   //    .attr('x', '80')
-   //    .attr('y', (d, i) => {
-   //      return currentY + i*25
-   //    })
-   // })
-
-
-
-    this.state = {
-      //the entire barcode, to be passed down to Barcode Component as props --  use only codes here, write rules for english translation in the Barcode Component
-      //NOTE: REQUIRE HELP TRANSLATING BARCODE FIELDS
-      status: "B2B",
-      distance: "3",
-      barcode: {
-         cl: {
-          // name: "Company Loci",
-          dr: "", 
-          verb: "2.2", 
-          object: "B", 
-          io: "", 
-        }, 
-         f1: {
-          // name: "First Intermediary",
-          dr: "", 
-          verb: "2.2", 
-          object: "B", 
-          io: "", 
-        }, 
-        f2: {
-          // name: "Second Intermediary",
-          dr: "A", 
-          verb: "3.1", 
-          object: "B", 
-          io: "", 
-        }, 
-        // pucl: {
-        //   // name: "Product Use Constituent Loci",
-        //   subject:"",
-        //   verb: "",
-        //   object: "",
-        // },
-        //  pufl: {
-        //   // name: "Product Use Final Loci",
-        //   subject: "B", 
-        //   verb: "1.2", 
-        //   object: "B",
-        // }, 
-        // dom: {
-        //   // name: "Domain",
-        //   dr: "B", 
-        //   verb: "1.2", 
-        //   object:"B", 
-        //   io:"", 
-        // }, 
-        cust: {
-          // name: "Customer Loci",
-          dr:"B", 
-          verb: "1.2", 
-          object: "B",
-          io:""
-        }, 
-        // cpul: {
-        //   subject:"B",
-        //   verb:"2.2", 
-        //   object:"E",
-        // },
-        // customerProductUseLoci: {
-        //   resourceLoci: {
-        //     subject: "B", 
-        //     verb: "2.2", 
-        //     object: "E",
-        //   }, 
-        //   workLoci: {
-        //     verb:"2.2", 
-        //     object:"E",
-        //   }
-        // }, 
-        cust2: {
-          // name: "Customer of Customer Loci",
-          dr: "",
-          verb: "2.2", 
-          object: "E",
-          io: "",
-        }
+//     g.append('text')
+//      .attr('transform', (d) => 'translate(' + labelArc2.centroid(d) + ")" )
+//      .attr('dy', '.35em')
+//      .text((d) => { 
+//        console.log('wat', d.data[4], d.data[2])
+//       return d.data[2]})
+//      .attr('fill', 'white')
