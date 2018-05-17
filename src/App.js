@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       barcodeIndex: 0,
       showB2B: true,
-      inDev: true, 
+      inDev: false, 
     };
     this.distanceClicker = this.distanceClicker.bind(this);
     this.businessClicker = this.businessClicker.bind(this);
@@ -50,8 +50,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log('company name', book[this.state.barcodeIndex].name, book[this.state.barcodeIndex].status)
-     if(this.state.inDev) return <PageSixChart />
+     if(this.state.inDev) return <div className='test-chart' />
 
     return (
       <div className="App">
@@ -83,7 +82,7 @@ class App extends Component {
             <h2 id="distance-score">Proximity to Consumers</h2>
             <p>Applying this algorithm to all companies in our dataset, we arrive at distance scores between 0 (company interacts directly with the consumer) and 5 (company is several steps removed from consumers). The advantage of this method is being able to differentiate B2B companies that are closer to consumers and for whom consumer brand perception matters more (e.g. Apple, Ford — both with scores of 1) from those more squarely in the B2B category (e.g. Boeing, IBM — scores of 4 and 5, respectively).</p>
             <p>Looking at the average revenue per company (left) in each of these groups, it is clear that the companies closer to consumers (denoted with blue lines) have higher revenue than those more distant. However, the median revenue (right) — which is less susceptible to extreme values — shows no distinct pattern. </p>
-            <span>chart goes here</span> <span>chart goes here</span>
+            <PageSixChart /> <span>chart goes here</span>
             <p>The mean values are skewed by high revenue outliers almost exclusively in companies close to consumers (scores closer to 0). We can confirm this by looking at the standard deviations (plotted below), which measures the variability of revenue within each group. Particularly in the past five years, the standard deviation is two to five times larger in companies close to consumers.</p>
             <span>chart goes here </span>
             <p>Alternatively, we can use boxplots to observe where the bulk of revenues earned by companies in each group lies. </p>

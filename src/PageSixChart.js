@@ -102,6 +102,27 @@ export default class PageSixChart extends Component {
         d3.selectAll('#page-six-chart > *').remove()
           this.drawData(savedData, newYear)
       })
+
+      plot.append('rect')
+          .attr('width', '10')
+          .attr('height', '10')
+          .attr('x', '300')
+          .attr('y', '420')
+          .style('fill', '#a70000')
+      plot.append('text')
+          .attr('x', '315')
+          .attr('y', '430')
+          .text("B2B's")
+      plot.append('rect')
+          .attr('width', '10')
+          .attr('height', '10')
+          .attr('x', '300')
+          .attr('y', '445')
+          .style('fill', '#005073')
+      plot.append('text')
+          .attr('x', '315')
+          .attr('y', '455')
+          .text("B2C's")
   }
 }
 
