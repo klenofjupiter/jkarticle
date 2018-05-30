@@ -35,12 +35,12 @@ export default class PageSixChart extends Component {
     const totalb2c = b2c.reduce((val, el) => Number(val) + Number(el[3]), 0)
     const totalCompanies = totalb2b + totalb2c
 
-    const width = 800
-    const height = 800
+    const width = 600
+    const height = 600
     const radius = Math.min(width, height)/2
 
-    const sliderFun = d3.select('#page-six-chart').append('input').attr('type', 'range')
-                        .attr('min', '2007').attr('max', '2016')
+    // const sliderFun = d3.select('#page-six-chart').append('input').attr('type', 'range')
+    //                     .attr('min', '2007').attr('max', '2016')
     
     const plot = d3.select('#page-six-chart').append(('svg')).attr('width',width).attr('height',height)
                   // .attr('transform', 'translate(' + (width/2) + "," + (height/2) + ")")
@@ -57,7 +57,7 @@ export default class PageSixChart extends Component {
                   .enter()
                   .append('g')
                   .attr('class', 'arc-1')
-                  .attr('transform', 'translate(400,400)')
+                  .attr('transform', 'translate(300,300)')
                   .on('click', () => {
                     let newYear;
                     if (year === '2016'){

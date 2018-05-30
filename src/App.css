@@ -13,8 +13,9 @@
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 60% 40%;
-  grid-column-gap: 50px;
+  /*grid-template-columns: 60% 40%;*/
+  grid-template-columns: 600px auto;
+  grid-column-gap: 75px;
 }
 .grid-left {
  grid-column-start: 1;
@@ -81,12 +82,6 @@
 .distance-toggle {
  display: none;
 }
-/*.distance-toggle.makeViz {
-  for animation when made viz
-  opacity: 1;
-  transition: all 2s;
-
-}*/
 .makeViz{
   display: block;
 }
@@ -139,18 +134,14 @@ h1 {
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-/*h1:hover, h1:focus {
-  transform: scale(1.05);
-}*/
+
 h2 {
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-/*h2:hover, h2:focus {
-  transform: scale(1.05);
-}*/
+
 
 h3 {
   -moz-osx-font-smoothing: grayscale;
@@ -161,14 +152,6 @@ h3 {
 h3:hover, h3:focus {
   transform: scale(1.05);
 }
-
-
-/*chart one left children styles*/
-
-/*.chart-one-left svg {
-  background-color: rgb(255, 255, 255);
-}*/
-
 
 .chart-one-left svg rect:hover {
   opacity: .7;
@@ -184,11 +167,6 @@ h3:hover, h3:focus {
 }
 
 .chart-one-left svg {
-  /*background-color: #fff;*/
-/*  width: 20vw;
-  height: 20vh;
-
-*/
 background-color: #eef4eb;
 }
 
@@ -227,10 +205,6 @@ background-color: #eef4eb;
   fill: steelblue;
 }
 
-.chart-one-left .x.axis path {
-  /*display: none;*/
-}
-
 .chart-one-left .tooltip {
   position: absolute;
   z-index: 10;
@@ -248,11 +222,8 @@ background-color: #eef4eb;
   font-weight: 700;
   font-size: 12.5px;
 } 
-/* chart two children styles*/
-/*.#chart-two .svg{
-  margin-top: 200px;
-}
-*/#chart-two .bar {
+
+#chart-two .bar {
   fill: steelblue;
 }
 #chart-two .bar:hover {
