@@ -21,6 +21,7 @@
  grid-column-start: 1;
  margin-left: 20px;
  padding-right: 20px;
+ line-height: 1.5;
 }
 
 .grid-right {
@@ -105,7 +106,7 @@ body {
   /*font-size: 1.20em;*/
 }
 .barcode-svg {
-  width: 60vw ;
+  width: 600px ;
   height: 100vh;
   position: -webkit-sticky;
   position: sticky;
@@ -149,9 +150,9 @@ h3 {
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-h3:hover, h3:focus {
+/*h3:hover, h3:focus {
   transform: scale(1.05);
-}
+}*/
 
 .chart-one-left svg rect:hover {
   opacity: .7;
