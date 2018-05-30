@@ -5,6 +5,7 @@ import Barcode from './Barcode.js';
 import ChartOneLeft from './ChartOneLeft';
 import ChartTwo from './ChartTwo';
 import PageSixChart from './PageSixChart';
+import PageSevenChart from './PageSevenChart';
 
 class App extends Component {
   constructor(){
@@ -50,7 +51,8 @@ class App extends Component {
   }
 
   render() {
-     if(this.state.inDev) return <div className='test-chart' />
+    //for development only -- give a clean canvas to draw a new chart
+     if(this.state.inDev) return <PageSevenChart />
 
     return (
       <div className="App">

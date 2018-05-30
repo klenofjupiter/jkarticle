@@ -105,8 +105,9 @@ body {
   padding-right: 5vw;
   padding-top: 5vh;
   padding-bottom: 5vh;
- background-color:#eef4eb; 
+  background-color:#eef4eb; 
   color: #464745;
+  /*font-size: 1.20em;*/
 }
 .barcode-svg {
   width: 60vw ;
@@ -138,18 +139,18 @@ h1 {
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-h1:hover, h1:focus {
+/*h1:hover, h1:focus {
   transform: scale(1.05);
-}
+}*/
 h2 {
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-h2:hover, h2:focus {
+/*h2:hover, h2:focus {
   transform: scale(1.05);
-}
+}*/
 
 h3 {
   -moz-osx-font-smoothing: grayscale;

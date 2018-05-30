@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import axios from 'axios'
+import axios from 'axios';
+
 export default class PageSixChart extends Component {
-  constructor(){
+  constructor() {
     super();
     this.drawData = this.drawData.bind(this);
   }
@@ -37,6 +38,9 @@ export default class PageSixChart extends Component {
     const width = 800
     const height = 800
     const radius = Math.min(width, height)/2
+
+    const sliderFun = d3.select('#page-six-chart').append('input').attr('type', 'range')
+                        .attr('min', '2007').attr('max', '2016')
     
     const plot = d3.select('#page-six-chart').append(('svg')).attr('width',width).attr('height',height)
                   // .attr('transform', 'translate(' + (width/2) + "," + (height/2) + ")")
@@ -54,6 +58,17 @@ export default class PageSixChart extends Component {
                   .append('g')
                   .attr('class', 'arc-1')
                   .attr('transform', 'translate(400,400)')
+                  .on('click', () => {
+                    let newYear;
+                    if (year === '2016'){
+                      newYear = '2007'
+                    }else{
+                      newYear =( Number(year) + 1)+ ""
+                    }
+                    d3.selectAll('#page-six-chart > *').remove()
+                      this.drawData(savedData, newYear)
+                  })
+
    //draw the chart
      let redCounter = 0; let blueCounter = 0
     g.append('path')
@@ -74,7 +89,7 @@ export default class PageSixChart extends Component {
     .attr('class', 'chart-label')
     .attr('text-anchor', 'end')
     .text(d => {
-      if (d.data[1] == 'b2b'){
+      if (d.data[1] === 'b2b'){
         return b2bDictionary[d.data[2]]
       }
       return b2cDictionary[d.data[2]]
@@ -92,16 +107,6 @@ export default class PageSixChart extends Component {
       .style('font-size', '1.25em')
       .style('font-weight', 'lighter')
       .attr('transform', 'translate(-90, 0)')
-      .on('click', () => {
-        let newYear;
-        if (year == '2016'){
-          newYear = '2007'
-        }else{
-          newYear =( Number(year) + 1)+ ""
-        }
-        d3.selectAll('#page-six-chart > *').remove()
-          this.drawData(savedData, newYear)
-      })
 
       plot.append('rect')
           .attr('width', '10')
@@ -123,6 +128,7 @@ export default class PageSixChart extends Component {
           .attr('x', '315')
           .attr('y', '455')
           .text("B2C's")
+
   }
 }
 
@@ -148,8 +154,6 @@ const b2cDictionary = {
   '3.1.2': 'Sell', 
   'others': 'others',
 }
-
-
 
 
 
