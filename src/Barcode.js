@@ -5,8 +5,6 @@ export default class Barcode extends Component {
 
   componentDidMount() {
     makeData(this.props.data, this.props.distanceClicker, this.props.status, this.props.distance, this.props.businessClicker, this.props.showB2B)
-   
-
       let score = document.getElementById('distance-score');
       let rect = score.getBoundingClientRect();
       if(rect && /*rect.top > 0 && */ rect.top < window.innerHeight){

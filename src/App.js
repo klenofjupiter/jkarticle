@@ -56,11 +56,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Using Locus to Compare B2B/B2C Companies</h1>
-        </header>
         <div className="grid-container">
         <article className="grid-left">
+         <h1 className="App-title">Using Locus to Compare B2B vs. B2C</h1>
           <section className="intro">
             <p>A common distinction made in business is between B2B (businesses that sell to other businesses) and B2C (businesses that sell to consumers) companies. While it is easy to determine if a single company is B2B or B2C, it is not entirely straightforward when attempting to do so for many companies within a dataset.</p>
             <p>Picture your local grocery store. Chances are, the products are organized in some variant of the following: baked goods and fresh vegetables in one aisle, raw meats in another, followed by frozen foods and dairy products, and candy across from soft drinks in the final aisle.</p>

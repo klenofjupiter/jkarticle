@@ -26,7 +26,7 @@ let dictionary = {
   'E': 'Energy',
   'F': 'People',
   '1.2':'Transports',
-  '1.3': 'Houses',
+  '1.3': 'Stores',
   '2.2': 'Produces',
   '3.1': 'Sells',
   '3.2': 'Exchanges', 
@@ -56,6 +56,7 @@ let barHeight = 25;
   			  .attr('y', '0')
   			  .text(`Hi, I'm ${data.name}`)
   			  .attr('class', 'intro-barcode')
+
 
     let cl = []
     for (let field in data.cl){
@@ -313,6 +314,7 @@ let barHeight = 25;
             }
         	return key[cust[i][1]]
         })
+
   
      let custLCS = custGroup.selectAll('.custCode')
       			  .data(cust)
@@ -410,9 +412,9 @@ let barHeight = 25;
     						  if(distance == 0){
     						  	return 'My customer is the final consumer'
     						  } else if(distance == 1){
-    						  	return 'There is one step between me and the consumer'
+    						  	return 'I am one step from the consumer'
     						  } else {
-    						  	return 'There are several steps between me and the consumer'
+    						  	return 'I am a few steps from the consumer'
     						  }
     						})
 
