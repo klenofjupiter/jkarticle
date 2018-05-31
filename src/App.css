@@ -1,27 +1,19 @@
 /*general styles and barcode viz*/
-.App-header {
-  padding: 20px;
-  background-color:#d3d8d0;
 
-}
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
 .grid-container {
   display: grid;
-  /*grid-template-columns: 60% 40%;*/
   grid-template-columns: 600px auto;
   grid-column-gap: 75px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 .grid-left {
  grid-column-start: 1;
- margin-left: 20px;
+ margin-left: 30px;
+ margin-top: 30px;
  padding-right: 20px;
  line-height: 1.5;
+ font-size: 1.25em;
 }
 
 .grid-right {
@@ -38,47 +30,47 @@
 .clCode {
   display: block;
   opacity:0;
-  transition: all .5s
+  transition: all 3s
 }
 .clCode.makeViz{
   opacity: 1;
-  transition: all 2s
+  transition: all .1s
 }
 .f1Code {
   display: block;
   opacity: 0;
-  transition: all .5s;
+  transition: all 3s;
 }
 .f1Code.makeViz{
   opacity: 1;
-  transition: all 2s
+  transition: all .1s
 }
 .f2Code {
   display: block;
   opacity: 0;
-  transition: all .5s;
+  transition: all 3s;
 }
 .f2Code.makeViz{
   opacity: 1;
-  transition: all 2s
+  transition: all .1s
 }
 .custCode {
   display: block;
   opacity: 0;
-  transition: all .5s;
+  transition: all 3s;
 }
 .custCode.makeViz{
   opacity: 1;
-  transition: all 2s
+  transition: all .1s
 }
 .cust2Code {
   display: block;
   opacity: 0;
-  transition: all .5s;
+  transition: all 3s;
 }
 .cust2Code.makeViz{
   opacity: 1;
-  transition: all 2s
+  transition: all .1s
 }
 .distance-toggle {
  display: none;
@@ -97,22 +89,19 @@ div.barcode-wrapper > h2 {
 }
 
 body {
-  padding-left: 5vw;
-  padding-right: 5vw;
-  padding-top: 5vh;
   padding-bottom: 5vh;
   background-color:#eef4eb; 
   color: #464745;
-  /*font-size: 1.20em;*/
+  font-family: 'Arimo', sans-serif;
 }
 .barcode-svg {
-  width: 600px ;
+  width: 470px ;
   height: 100vh;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  padding-top: 150px;
   padding-right: 0px;
+  padding-top: 50px;
   margin-right: 0px;
 
   -moz-osx-font-smoothing: grayscale;
@@ -120,9 +109,7 @@ body {
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-.barcode-svg:hover, .barcode-svg:focus {
-  transform: scale(1.05);
-}
+
 article {
   padding-left: 10px;
 }
@@ -130,10 +117,17 @@ div {
  overflow: visible;
 }
 h1 {
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  transition: transform 0.25s ease-out;
+  /*border-style: solid;*/
+  padding-top: 300px;
+  text-align: center;
+  font-size: 1.25em;
+  padding-bottom: 10px;
+  background: url('36-Phase-Transparent.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-weight: bolder;
+
 }
 
 h2 {
@@ -150,10 +144,10 @@ h3 {
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
 }
-/*h3:hover, h3:focus {
-  transform: scale(1.05);
-}*/
-
+/*p {
+  font-weight: lighter;
+}
+*/
 .chart-one-left svg rect:hover {
   opacity: .7;
 }
@@ -172,10 +166,10 @@ background-color: #eef4eb;
 }
 
 .chart-one-left #form {
-      position: relative;
-      right: 10px;
-      top: 10px;
-      padding-bottom: 20px;
+  position: relative;
+  right: 10px;
+  top: 10px;
+  padding-bottom: 20px;
 }
 
 .chart-one-left  .axis path,
