@@ -20,6 +20,8 @@
   grid-column-start: 2;
   margin-right: 0;
   padding-right: 0;
+  position: fixed;
+  top:0;
  }
 .fixed {
   position:fixed;
@@ -97,9 +99,9 @@ body {
 .barcode-svg {
   width: 470px ;
   height: 100vh;
-  position: -webkit-sticky;
+/*  position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 0;*/
   padding-right: 0px;
   padding-top: 50px;
   margin-right: 0px;
@@ -108,6 +110,17 @@ body {
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
+}
+#barcode-div {
+  position: fixed;
+  top: 0;
+  left:660px;
+}
+.intro-barcode {
+  position: fixed;
+  top: 0;
+  margin-top: 30px;
+  margin-left: 10px;
 }
 
 article {

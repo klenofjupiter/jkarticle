@@ -51,9 +51,14 @@ let startHeight = 50;
 let barLeft = 20;
 let barHeight = 25;
  
-  let intro = d3.select('#viz').append('text')
-  			  .attr('x', () => barLeft)
-  			  .attr('y', '0')
+  let plot = d3.select('#barcode-div')
+               .append('svg')
+               .attr('id', 'viz')
+               .attr('class', "barcode-svg")
+
+  let intro = d3.select('#barcode-div').append('div')
+  			  // .attr('x', () => barLeft)
+  			  // .attr('y', '0')
   			  .text(`Hi, I'm ${data.name}`)
   			  .attr('class', 'intro-barcode')
 
